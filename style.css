@@ -1,4 +1,3 @@
-
 /* ====== Base / Tokens ====== */
 *{box-sizing:border-box} html,body{height:100%}
 :root{
@@ -14,51 +13,109 @@ h1,h2,h3,h4,h5,h6{font-family:"Poppins",ui-sans-serif;font-weight:600;letter-spa
 h2{font-weight:600} h5{font-weight:400}
 
 /* Accessibility */
-.skip-link{position:absolute;left:-9999px} .skip-link:focus{left:1rem;top:1rem;background:#000;color:#fff;padding:.5rem .75rem;z-index:9999}
+.skip-link{position:absolute;left:-9999px}
+.skip-link:focus{left:1rem;top:1rem;background:#000;color:#fff;padding:.5rem .75rem;z-index:9999;border-radius:10px}
 
 /* Keep sheet shadow visible */
-.viewport-pad{min-height:100dvh;padding:clamp(10px,3vw,24px);background:radial-gradient(1200px 600px at 50% -200px, rgba(0,0,0,.06), transparent 60%),linear-gradient(180deg,#f7f7f9,#ececf1 40%,#e7e7ee)}
-.page{width:min(100% - clamp(12px,4vw,48px),980px);margin-inline:auto;background:var(--paper);color:var(--ink);border-radius:14px;padding:clamp(16px,3vw,40px);box-shadow:0 22px 50px rgba(0,0,0,.12),0 8px 24px rgba(0,0,0,.1),0 2px 8px rgba(0,0,0,.06);outline:1px solid rgba(0,0,0,.03)}
+.viewport-pad{
+  min-height:100dvh;
+  padding:clamp(10px,3vw,24px);
+  background:
+    radial-gradient(1200px 600px at 50% -200px, rgba(0,0,0,.06), transparent 60%),
+    linear-gradient(180deg,#f7f7f9,#ececf1 40%,#e7e7ee);
+}
+.page{
+  width:min(100% - clamp(12px,4vw,48px), 980px);
+  margin-inline:auto;
+  background:var(--paper);
+  color:var(--ink);
+  border-radius:14px;
+  padding:clamp(16px,3vw,40px);
+  box-shadow:0 22px 50px rgba(0,0,0,.12),0 8px 24px rgba(0,0,0,.1),0 2px 8px rgba(0,0,0,.06);
+  outline:1px solid rgba(0,0,0,.03);
+}
 
 /* Header layout: stacked so contact stays under subtitle */
-.header{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(12px,2.5vw,24px);padding-bottom:1rem;border-bottom:3px solid currentColor}
-.header__name h1{margin:.25rem 0 0;line-height:1.05;font-size:2.8rem} /* same size on mobile and desktop */
+.header{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:clamp(12px,2.5vw,24px);
+  padding-bottom:1rem;
+  border-bottom:3px solid currentColor;
+}
+.header__name h1{margin:.25rem 0 0;line-height:1.05;font-size:2.8rem}
 .header__name h2{margin:.25rem 0 0;font-weight:400;font-size:clamp(1rem,2.4vw,1.25rem);color:var(--muted)}
 .header__contact{display:grid;gap:.35rem;align-content:start}
 .header__contact-label{text-transform:uppercase;letter-spacing:.04em;margin-right:.5ch;font-weight:600}
 .header__contact-field a{text-decoration:underline;text-underline-offset:3px}
 
 /* Floating action buttons (FAB) with tooltips */
-.header__actions{position:fixed;right:clamp(12px,2vw,20px);top:clamp(12px,2vw,20px);display:flex;flex-direction:column;gap:.55rem;z-index:9999}
+.header__actions{
+  position:fixed;
+  right:clamp(12px,2vw,20px);
+  top:clamp(12px,2vw,20px);
+  display:flex;
+  flex-direction:column;
+  gap:.55rem;
+  z-index:9999;
+}
 @media(max-width:768px){
   .header__actions{top:auto;bottom:clamp(12px,3vw,20px);right:clamp(12px,3vw,20px)}
 }
-.btn-toggle,.btn-expview,.btn-print{width:48px;height:48px;border:0;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 .5rem .9rem rgba(0,0,0,.15);cursor:pointer;transition:transform .08s ease-in-out}
+.btn-toggle,.btn-expview,.btn-print{
+  width:48px;height:48px;border:0;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  box-shadow:0 .5rem .9rem rgba(0,0,0,.15);
+  cursor:pointer;transition:transform .08s ease-in-out, opacity .15s ease-in-out;
+}
 .btn-toggle{background:#111;color:#fff}
 .btn-expview{background:#eaf6ff}
-.btn-print{background:#e9ecff}
+.btn-print{background:#ffe9ef}
 .btn-toggle:hover,.btn-expview:hover,.btn-print:hover{transform:translateY(-1px)}
-/* Labels only on wide screens */
 .btn-expview span{display:none}
 @media(min-width:1100px){
   .header__actions{flex-direction:row}
-  .btn-expview{border-radius:999px;padding:0 .9rem;gap:.5rem}
+  .btn-expview,.btn-print{border-radius:999px;padding:0 .9rem;gap:.5rem;width:auto}
   .btn-expview span{display:inline-block;font-weight:600}
 }
-/* CSS tooltips */
 .tip{position:relative}
-.tip::after{content:attr(data-tip);position:absolute;right:110%;top:50%;transform:translateY(-50%);white-space:nowrap;background:#111;color:#fff;font:500 12px/1 "Inter";padding:.4rem .5rem;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .15s, transform .15s;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.tip::after{
+  content:attr(data-tip);
+  position:absolute;right:110%;top:50%;
+  transform:translateY(-50%);
+  white-space:nowrap;
+  background:#111;color:#fff;
+  font:500 12px/1 "Inter";
+  padding:.4rem .5rem;border-radius:6px;
+  opacity:0;pointer-events:none;
+  transition:opacity .15s, transform .15s;
+  box-shadow:0 6px 18px rgba(0,0,0,.18);
+}
 .tip:hover::after{opacity:1;transform:translate(-2px,-50%)}
-@media(max-width:1100px){.tip::after{display:none}} /* no tooltip on small screens */
+@media(max-width:1100px){.tip::after{display:none}}
 
 /* Body grid */
-.resume-body{display:grid;grid-template-columns:2fr 1fr;gap:clamp(16px,3vw,32px);margin-top:1rem}
+.resume-body{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:clamp(16px,3vw,32px);
+  margin-top:1rem;
+}
 @media(max-width:980px){.resume-body{grid-template-columns:1fr}}
 
 /* Category accordions */
 .category{border-bottom:2px solid currentColor;padding-bottom:.5rem;margin-bottom:.5rem}
-.cat-toggle{width:100%;display:flex;align-items:center;gap:.6rem;background:transparent;border:0;padding:.4rem 0 .4rem .2rem;font:600 1.25rem/1.2 "Poppins",ui-sans-serif;cursor:pointer;text-align:left}
-.cat-toggle::before{content:"▾";display:inline-block;transition:transform .15s ease-in-out;transform-origin:center; font-size:1.1em}
+.cat-toggle{
+  width:100%;display:flex;align-items:center;gap:.6rem;
+  background:transparent;border:0;padding:.4rem 0 .4rem .2rem;
+  font:600 1.25rem/1.2 "Poppins",ui-sans-serif;
+  cursor:pointer;text-align:left;
+}
+.cat-toggle::before{
+  content:"▾";display:inline-block;transition:transform .15s ease-in-out;
+  transform-origin:center;font-size:1.1em
+}
 .category[data-open="false"] .cat-toggle::before{transform:rotate(-90deg)}
 .category__content{padding-top:.25rem}
 .category[data-open="false"] .category__content{display:none}
@@ -70,7 +127,6 @@ h2{font-weight:600} h5{font-weight:400}
 .experience__title h3,.experience__title h5{margin:0}
 .experience__title h5{font-style:italic;font-weight:400;color:var(--muted)}
 .experience__date{display:block;margin:.35rem 0 .5rem;text-transform:uppercase;letter-spacing:.08em;font-size:.9rem;opacity:.9}
-
 .exp-label{margin:.25rem 0 0;font:600 0.9rem/1.2 "Poppins"}
 .exp-specific,.exp-main{margin:.1rem 0 0;padding-left:1.2rem}
 .exp-specific li,.exp-main li{margin:.1rem 0}
@@ -81,11 +137,28 @@ h2{font-weight:600} h5{font-weight:400}
 .expview-long .exp-specific{display:none}
 .expview-long .exp-label--specific{display:none}
 
+/* Keep certain lists visible in both Short/Long views (used for categories that don't have Main vs Specific split) */
+.expview-long .exp-always{display:block !important}
+.expview-short .exp-always{display:block !important}
+
 /* Right column polish */
-.card{padding:.75rem .9rem;border:1px solid rgba(0,0,0,.06);border-radius:12px;background:#fafbff;box-shadow:0 2px 8px rgba(0,0,0,.04)}
-.social .fa{width:24px}
+/* Social icons: support FA solid + brands (fas/fab/fa-*) */
+.social i{
+  width:24px;
+  min-width:24px;
+  text-align:center;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  color:currentColor; /* works in light + dark */
+  opacity:.9;
+}
+.social__group{display:flex;align-items:center;gap:.6rem;margin:.35rem 0}
+.social__group:hover i{opacity:1; transform:translateY(-1px)}
+.social i{transition:opacity .15s ease, transform .15s ease}
+
+.print-link-wrap{margin-top:1rem}
 .print-link{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;text-decoration:none}
-.print-link i{font-size:1.15rem}
 
 /* Links */
 a{color:var(--accent);transition:color .15s,opacity .15s}
@@ -99,16 +172,33 @@ body.dark{--ink:#ffffff;--paper:#1b1b1b;--bg:#121212;--muted:#e7e9ff}
 body.dark, body.dark *{color:var(--ink) !important}
 body.dark a{color:#a9c6ff !important}
 body.dark a:hover{color:#c6d8ff !important}
-body.dark .page{box-shadow:0 22px 50px rgba(0,0,0,.55),0 8px 24px rgba(0,0,0,.45),0 2px 8px rgba(0,0,0,.35)}
-body.dark .card{background:#202233;border-color:#2b2f49;box-shadow:0 2px 8px rgba(0,0,0,.35)}
-body.dark .btn-toggle{background:#111;color:#ddd} body.dark .btn-print{background:#2a2a3a;color:#ddd}
+body.dark .page{
+  box-shadow:0 22px 50px rgba(0,0,0,.55),0 8px 24px rgba(0,0,0,.45),0 2px 8px rgba(0,0,0,.35);
+  outline:1px solid rgba(255,255,255,.06);
+}
 body.dark ::selection{background:#1d3350;color:#fff}
 
-/* Print */
-@media print{
-  @page{size:A4;margin:10mm}
-  html,body{background:#fff!important}
-  .viewport-pad{padding:0;background:#fff}
-  .page{width:auto;margin:0;padding:0;border-radius:0;box-shadow:none;outline:none}
-  .btn-toggle,.btn-expview,.btn-print,.skip-link{display:none!important}
+/* ================= PDF export mode (only while generating PDF) ================= */
+body.pdf-export .header__actions{display:none!important}
+/* Denser PDF */
+body.pdf-export{font-size:11.25px; line-height:1.34}
+body.pdf-export .header__name h1{font-size:1.95rem}
+body.pdf-export .header__name h2{font-size:0.95rem}
+body.pdf-export .cat-toggle{font-size:0.95rem}
+body.pdf-export .experience{padding:.55rem 0 .8rem}
+body.pdf-export .experience__date{font-size:.76rem}
+/* Remove heavy shadows for raster capture */
+body.pdf-export .page{box-shadow:none!important;outline:none!important}
+/* Smarter page breaks */
+.experience__title, .experience__date, .exp-label, .cat-toggle, .skills h2, .social h2{
+  break-after: avoid;
+  page-break-after: avoid;
 }
+.experience, .social, .category__content{
+  break-inside: auto;
+}
+li, .social__group{
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.exp-specific, .exp-main{break-inside:auto}
