@@ -1,606 +1,1093 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Resume CV</title>
-        <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto:300,400" rel="stylesheet">
-        <link href="style.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <script src="https://use.fontawesome.com/334b91c43a.js"></script>
-    </head>
+    <title>Eric Margay — Hardware &amp; Software Engineer</title>
+    <meta name="description"
+        content="Eric Margay — Hardware and software engineer in Mexico City. Python, Django, JavaScript, C++, ESP32, Raspberry Pi and UWB. Currently at Ford Motor Company's Global Technology &amp; Business Center.">
+    <meta name="author" content="Eric Margay">
 
-    <body class="light">
-        <div class="full-resume">
-            <div class="header">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Eric Margay — Hardware &amp; Software Engineer">
+    <meta property="og:description"
+        content="Hardware and software engineer building systems where code meets physical devices. Python, Django, ESP32, Raspberry Pi, UWB.">
+    <meta property="og:url" content="https://ericmargay.github.io/DevResumeCV/">
+    <meta name="twitter:card" content="summary">
 
-                <div class="header__name">
-                    <div class="btn-toggle"><i class="fas fa-moon"></i></div>
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0e1116" media="(prefers-color-scheme: dark)">
 
-                    <h1>Eric <span>Margay</span></h1>
-                    <h2>Hardware & Software Developer Engineer </h2>
-                </div> <!-- /.header__name -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 
-                <div class="header__contact">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Source+Serif+4:opsz,wght@8..60,400..700&display=swap"
+        rel="stylesheet">
 
-                    <div class="header__contact-field">
-                        <span class="header__contact-label">Email : </span>
-                        <a href="mailto:ericmargay@gmail.com" class="header__contact-value">ericmargay@gmail.com</a>
-                    </div> <!-- /.header__contact-field -->
+    <link href="style.css" rel="stylesheet">
 
-                    <div class="header__contact-field">
-                        <span class="header__contact-label">Phone : </span>
-                        <a href="tel:+525531147288" class="header__contact-value">+525531147288
-                        </a>
-                    </div> <!-- /.header__contact-field -->
+    <!-- Applies the stored theme/language before first paint so the page never flashes. -->
+    <script>
+        (function () {
+            var d = document.documentElement;
+            try {
+                var t = localStorage.getItem('cv-theme');
+                if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
+                var l = localStorage.getItem('cv-lang');
+                if (l !== 'en' && l !== 'es') l = (navigator.language || 'en').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+                d.setAttribute('data-lang', l);
+                d.lang = l;
+            } catch (e) { }
+        })();
+    </script>
+</head>
 
-                </div> <!-- /.header__contact -->
+<body>
+    <a class="skip-link" href="#main">
+        <span class="en">Skip to content</span><span class="es">Saltar al contenido</span>
+    </a>
 
-            </div> <!-- /.header -->
+    <!-- Icon sprite: inline so the CV renders with zero external icon requests. -->
+    <svg class="sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-mail" viewBox="0 0 24 24">
+            <path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z" />
+            <path d="m3.5 7 8.5 6 8.5-6" />
+        </symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24">
+            <path
+                d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5L16 12l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.5 5.2 2 2 0 0 1 5.5 3z" />
+        </symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24">
+            <path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11z" />
+            <circle cx="12" cy="10" r="2.5" />
+        </symbol>
+        <symbol id="i-linkedin" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M7 10v7M7 7v.01M11.5 17v-4a2.5 2.5 0 0 1 5 0v4" />
+        </symbol>
+        <symbol id="i-github" viewBox="0 0 24 24">
+            <path
+                d="M9 19c-4 1.4-4-2.1-6-2.6m12 5v-3.6a3.1 3.1 0 0 0-.9-2.4c2.9-.3 6-1.4 6-6.4a5 5 0 0 0-1.4-3.4 4.6 4.6 0 0 0-.1-3.5s-1.1-.3-3.6 1.4a12.3 12.3 0 0 0-6.4 0C6.1 2.1 5 2.4 5 2.4a4.6 4.6 0 0 0-.1 3.5A5 5 0 0 0 3.5 9.4c0 5 3 6.1 5.9 6.4a3.1 3.1 0 0 0-.9 2.4V22" />
+        </symbol>
+        <symbol id="i-codepen" viewBox="0 0 24 24">
+            <path d="M12 2.5 22 9v6l-10 6.5L2 15V9z" />
+            <path d="M12 8.5 22 15M12 8.5 2 15M12 8.5v-6M12 15.5 22 9M12 15.5 2 9M12 15.5v6" />
+        </symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4.2" />
+            <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8" />
+        </symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24">
+            <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" />
+        </symbol>
+        <symbol id="i-print" viewBox="0 0 24 24">
+            <path d="M7 9V3h10v6M7 19H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+            <rect x="7" y="15" width="10" height="6" rx="1" />
+        </symbol>
+        <symbol id="i-link" viewBox="0 0 24 24">
+            <path d="M10.5 13.5a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1.5 1.5" />
+            <path d="M13.5 10.5a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1.5-1.5" />
+        </symbol>
+    </svg>
 
-            <div class="resume-body">
+    <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
 
-                <div class="resume-body__left">
+    <header class="topbar">
+        <div class="topbar__inner">
+            <a class="topbar__brand" href="#top">
+                Eric Margay
+                <span class="topbar__brand-role en">Hardware &amp; Software Engineer</span>
+                <span class="topbar__brand-role es">Ingeniero de Hardware y Software</span>
+            </a>
 
-                    <div class="experience-list"> <!-- Engineer Work Experience -->
-                        <h2>Professional Experience</h2>   
-                            <div class="experience"> <!-- FORD MOTOR COMPANY -->
-    
-                                <div class="experience__title">
-                                    <h3> <a href="https://www.ford.mx/" style="color: rgb(111, 111, 228);">FORD MOTOR COMPANY<a>
+            <nav class="topbar__nav" id="section-nav" aria-label="Sections">
+                <a href="#experience"><span class="en">Experience</span><span class="es">Experiencia</span></a>
+                <a href="#education"><span class="en">Education</span><span class="es">Educación</span></a>
+                <a href="#teaching"><span class="en">Teaching</span><span class="es">Docencia</span></a>
+                <a href="#creative"><span class="en">Creative</span><span class="es">Creativo</span></a>
+                <a href="#skills"><span class="en">Skills</span><span class="es">Skills</span></a>
+                <a href="#awards"><span class="en">Awards</span><span class="es">Premios</span></a>
+            </nav>
 
-                                    </a>/ 
-                                    <a href="https://www.ford.mx/" style="color: rgb(111, 111, 228);">GLOBAL TECHNOLOGY & BUSINESS CENTER<a>
+            <div class="topbar__actions">
+                <div class="lang-switch" role="group" aria-label="Language / Idioma">
+                    <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+                    <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+                </div>
 
-                                    </a></h3>
-                                    <!-- <h5><span>Software Engineer <br>  IPTSE CAE </span>  <br> &ndash;  México City</h5> -->
-                                    <h5><span>Software Engineer <br>  IPTSE CAE </span>  <br> México City</h5>
-                                </div> <!-- /.experience__title -->
-    
-                                <span class="experience__date"> February 2023 - Current Time 2025 </span>
-    
-                                <ul class="experience__info">
-                                    <h3>MAIN EXPERIENCE</h3>
-                                    <li>Develop new code based on the deadlines scheduled by the team leader/PM/supervisor to deliver projects on time.</li>
-                                    <li>Design and develop technology integration between systems.</li>
-                                    <li>Unified hardware product systems with engineering teams.</li>
-                                    <li>Built tools based on apps experiences and customer's needs.</li>
-                                    <li>Work with agile methodology for issue tracking and monitoring.</li>
-                                    <li>Remained up-to-date on latest coding practices and learn new skills.</li>
-                                    <li>Wrote clean, reusable, well-commented code.</li>
-                                    <li>Collaborated with other developers engineers and designers, often handling other's work.</li>
-                                    <li>Participate actively in all phases of software development life cycle (SDLC).</li>
-                                    <li>Create technical documentation as needed or requested.</li>
-                                    <li>Document project requirements and specifications.</li>
-                                    <li>Propose different ways to solve code problems or suggest new improvements for the code (refactoring).</li>
-                                    <li>Test applications before they are released into production environment.</li>
-                                    <li>Troubleshoot application issues reported from users.</li>
-                                    <li>Propose different ways to solve code problems or suggest new improvements for the code [REFACTORING].</li>
-                                    <li>Report weekly activities to the team leader, including challenges and discoveries.</li>
-                                    <li>Perform peer to peer meetings reviews.</li>
+                <button type="button" class="icon-btn" id="theme-toggle" aria-pressed="false">
+                    <svg class="icon icon--sun"><use href="#i-sun" /></svg>
+                    <svg class="icon icon--moon"><use href="#i-moon" /></svg>
+                    <span class="sr-only en">Toggle dark mode</span>
+                    <span class="sr-only es">Cambiar modo oscuro</span>
+                </button>
 
-                                    <h3>SPECIFIC EXPERIENCE</h3>
-                                    <li>Collab developing software and hardware for intern innovation. </li>
-                                    <li>Microsoft PowerApp automation code development with Planner and Sharepoint Connectors. </li>
-                                    <li>Work with github roadmaps as a agile methodology for issue tracking and monitoring.</li>
-                                    <li>Wrote clean, reusable, well-commented code using PEP-8 Python Standards.</li>
-                                    <li>Created custom solutions with Python and Javascript for customer's specific needs.</li>
-                                    <li>Maintain Python code for the automation of reports already developed for the virtual CAE PowerTrain testing teams.</li>
-                                    <li>Apply clean code and solid principles for code development.</li>
-                                    <li>Used Git version control system to manage source codes.</li>
-                                    <li>Python and JS Code Documentation and presentation in Jupyter Notebooks.</li>
-                                    <li>UI / UX Design infrastructure implementation Figma Sketches.</li>
-                                    <li>Creating code sub-module to control smart signaling lighting applied to the automotive issues.</li>
+                <button type="button" class="btn btn--ghost topbar__print" id="print-btn-top">
+                    <svg class="icon"><use href="#i-print" /></svg>
+                    <span class="en">PDF</span><span class="es">PDF</span>
+                </button>
+            </div>
+        </div>
+    </header>
 
-                                </ul> <!-- /.experience__info -->
-    
-                            </div><!-- /.experience FORD MOTOR COMPANY-->
-                            <div class="experience"> <!-- EUM TECH -->
-    
-                                <div class="experience__title">
-                                    <h3> <a href="https://eumtech.com.mx/" style="color: rgb(111, 111, 228);">EUM TECH<a>
+    <main id="main">
 
-                                    </a>/ 
-                                    <a href="https://www.parkingtip.com.mx/" style="color: rgb(111, 111, 228);">PARKING TIP<a>
+        <section class="hero" id="top">
+            <p class="hero__eyebrow">
+                <span class="en">Mexico City · Open to remote &amp; hybrid roles</span>
+                <span class="es">Ciudad de México · Abierto a roles remotos e híbridos</span>
+            </p>
 
-                                    </a></h3>
-                                    <h5><span> Developer Engineer / Engineer department</span> &ndash; México City</h5>
-                                </div> <!-- /.experience__title -->
-    
-                                <span class="experience__date"> December 2021 - February2023 </span>
-    
-                                <ul class="experience__info">
-                                    <h3>MAIN EXPERIENCE</h3>
-                                    <li>Modified and implemented company API with company's product suite.</li>
-                                    <li>Design, develop and custom technology integration between systems.</li>
-                                    <li>Unified hardware product systems with developed apps.</li>
-                                    <li>Built web based apps experiences based on customer's needs.</li>
-                                    <li>Technical support of the developed works to customers.</li>
-                                    <li>Remained up-to-date on latest web practices and learn new skills.</li>
-                                    <li>Wrote clean, reusable, well-commented code.</li>
-                                    <li>Created custom solutions with Python and Javascript for customer's specific needs.</li>
-                                    <li>Upgrade cloning systems to production.</li>
-                                    <li>Created and Modified software and hardware tools to enhance built funcionalities.</li>
-                                    <li>Trained new hires on various aspects of company's development process.</li>
-                                    <li>Developed and modified back-end and front-end functionalities.</li>
-                                    <li>Collaborated with other developers engineers and designers, often handling other's work.</li>
+            <h1 class="hero__name">Eric Margay</h1>
 
-                                    <h3>SPECIFIC EXPERIENCE</h3>
-                                    <li>Creating code sub-module to control smart signaling lighting with serial port communication between Python Oriented Object Programming and hardware frameworks.</li>
-                                    <li>Functionalities with websockets communicating between Javascript and Python scripts.</li>
-                                    <li>MVC Implementations in Django of new capabilities.</li>
-                                    <li>Connect with SSH remote servers to get control of some behaviours in Apache for testing data correlations with WALMART customer client.</li>
-                                    <li>Python and JS Code Documentation and presentation in Jupyter Notebooks.</li>
-                                    <li>UI / UX Design infrastructure implementation Figma Sketches.</li>
-    
-                                </ul> <!-- /.experience__info -->
-    
-                            </div><!-- /.experience EUM TECH-->    
-                            <div class="experience"> <!-- LAMBDA MOVILITY -->
-    
-                                <div class="experience__title">
-                                    <h3> <a href="http://lambdamobility.com/" style="color: rgb(111, 111, 228);">LAMBDA MOBILITY<a></a></h3>                                    
-                                    <h5><span>Developer Engineer / Co Founder </span> &ndash; México City </h5>
-                                </div> <!-- /.experience__title -->
-    
-                                <span class="experience__date">May 2022 - CUrrent Time 2024</span>
-    
-                                <ul class="experience__info">
-                                    <h3>MAIN EXPERIENCE</h3>
-                                    <li>Hardware and Software Development focused in Real Time Tracking Services.</li>
-                                    <li>Indoor Positioning with Ultra Wideband Radiofrequency Technology.</li>
-                                    <li>Electronic Design systems.</li>
+            <p class="hero__role">
+                <span class="en">Hardware &amp; Software Engineer</span>
+                <span class="es">Ingeniero de Hardware y Software</span>
+            </p>
 
-                                    <h3>SPECIFIC EXPERIENCE</h3>
-                                    <li>Implementing hardware code to manage UWB tringulation signals with Micro Python and C++.</li>
-                                    <li>Communication with websockets in the model app for public transportation.</li>
-                                    <li>MVC Implementations in Django of new capabilities.</li>
-                            
-    
-                                </ul> <!-- /.experience__info -->
-    
-                            </div> <!-- /.experience LAMBDA MOVILITY-->
-                            <div class="experience"> <!-- WALTEM HEALTH -->
-    
-                                <div class="experience__title">
-                                    <h3> <a href="http://lambdamobility.com/" style="color: rgb(111, 111, 228);">WALTEM HEALTH<a></a></h3>                                    
-                                    <h5><span>Developer Engineer / Engineer department</span> &ndash; México City</h5>
-    
-                                </div> <!-- /.experience__title -->
-    
-                                <span class="experience__date">September 2019 - February 2020</span>
-    
-                                <ul class="experience__info">
+            <p class="hero__summary en">
+                Engineer with 7+ years building systems where code meets physical devices — from Python automation and
+                Django services to firmware on ESP32, Raspberry Pi and Ultra-Wideband radio. Currently automating CAE
+                PowerTrain simulation reporting at Ford's Global Technology &amp; Business Center, and a long-standing
+                workshop instructor in Python, IoT and web development.
+            </p>
+            <p class="hero__summary es">
+                Ingeniero con más de 7 años construyendo sistemas donde el código se encuentra con el dispositivo físico
+                — desde automatización en Python y servicios Django hasta firmware en ESP32, Raspberry Pi y radio
+                Ultra-Wideband. Actualmente automatizo los reportes de simulación CAE PowerTrain en el Global Technology
+                &amp; Business Center de Ford, y desde hace años imparto talleres de Python, IoT y desarrollo web.
+            </p>
 
-                                    <h3>MAIN EXPERIENCE</h3>
-                                    <li>Consultoring technology solutions to cross Software to Hardware.</li>
-                                    <li>Developed python solutions from Raspberry PI to cloud.</li>
-                                    <li>Worked with various departments to create best solution for customer in health area.
-                                    </li>
-                                    <li>Documented common issues and corresponding solutions.</li>
+            <ul class="contact">
+                <li>
+                    <svg class="icon"><use href="#i-mail" /></svg>
+                    <a href="mailto:ericmargay@gmail.com">ericmargay@gmail.com</a>
+                </li>
+                <li>
+                    <svg class="icon"><use href="#i-phone" /></svg>
+                    <a href="tel:+525531147288">+52 55 3114 7288</a>
+                </li>
+                <li>
+                    <svg class="icon"><use href="#i-pin" /></svg>
+                    <span class="en">Mexico City, Mexico</span><span class="es">Ciudad de México, México</span>
+                </li>
+                <li>
+                    <svg class="icon"><use href="#i-linkedin" /></svg>
+                    <a href="https://www.linkedin.com/in/ericmargay" target="_blank" rel="noopener">linkedin.com/in/ericmargay</a>
+                </li>
+                <li>
+                    <svg class="icon"><use href="#i-github" /></svg>
+                    <a href="https://github.com/ericmargay" target="_blank" rel="noopener">github.com/ericmargay</a>
+                </li>
+                <li>
+                    <svg class="icon"><use href="#i-codepen" /></svg>
+                    <a href="https://codepen.io/ericmargay" target="_blank" rel="noopener">codepen.io/ericmargay</a>
+                </li>
+            </ul>
 
-                                    <h3>SPECIFIC EXPERIENCE</h3>
-                                    <li>Coding Python HTTP request of measurements to cloud.</li>
-                                    <li>Develop Python Algorithms for ECG sensors data.</li>
-                                    <li>Hacking actual systems to enhance in house implementation of Medical Hardware.</li>
+            <div class="hero__actions">
+                <button type="button" class="btn btn--solid" id="print-btn">
+                    <svg class="icon"><use href="#i-print" /></svg>
+                    <span class="en">Download PDF</span><span class="es">Descargar PDF</span>
+                </button>
+                <a class="btn btn--ghost" href="mailto:ericmargay@gmail.com">
+                    <svg class="icon"><use href="#i-mail" /></svg>
+                    <span class="en">Get in touch</span><span class="es">Contactar</span>
+                </a>
+            </div>
+        </section>
 
+        <div class="layout">
 
+            <div class="layout__main">
 
+                <!-- ============================ EXPERIENCE ============================ -->
+                <section class="section" id="experience">
+                    <h2 class="section__title">
+                        <span class="en">Professional Experience</span>
+                        <span class="es">Experiencia Profesional</span>
+                    </h2>
 
+                    <ol class="timeline">
 
-    
-                                </ul> <!-- /.experience__info -->
-    
-                            </div> <!-- /.experience WALTEM HEALTH-->    
-                            <div class="experience"> <!-- STREAMR INC -->
-    
-                                <div class="experience__title">
-                                    <h3> <a href="https://streamr.network/" style="color: rgb(111, 111, 228);">STREAMR INC.<a></a></h3>                                    
-                                    <h5><span>Engineer freelance / Evangelist Tech </span> &ndash; Switzerland</h5>
-    
-                                </div> <!-- /.experience__title -->
-    
-                                <span class="experience__date">March 2019 - CUrrent Time 2024</span>
-    
-                                <ul class="experience__info">
-    
-                                    <h3>MAIN EXPERIENCE</h3>
-                                    <li>Resolved issues betwenn the API and Internet of things connected with the blockchain
-                                        plarform market.</li>
-                                    <li>Created a crash course to explore many possibilities with hardware.</li>
-                                    <li>Assisted students on technology events.</li>
-                                    <li>Automated processes with GIT.</li>
-                                    <li>Learned new programming languages and skills to boost efficiency.</li>
-
-                                    <h3>SPECIFIC EXPERIENCE</h3>
-                                    <li>Working with python programming structured data to stream to the streamr cloud.</li>
-                                    <li>Created Python course under Raspberry Platform and ESP32 Dev Boards.</li>
-                                    <li>Assisted academicstudents in the python modules.</li>
-
-
-    
-                                </ul> <!-- /.experience__info -->
-    
-                            </div> <!-- /.experience STREAMR INC-->    
-                    </div>                    
-
-                    <div class="experience-list"> <!-- Tech Educational Experience -->
-                        <h2>Technology Educational Experience</h2>
-                        <div class="experience">
-
-                            <div class="experience__title">
-                                <h3> <a href="https://www.ironhack.com/en" style="color: rgb(111, 111, 228);"> IRON HACK MÉXICO <a>
-                                </a> 
+                        <!-- FORD -->
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    <a href="https://www.ford.mx/" target="_blank" rel="noopener">Ford Motor Company</a>
+                                    <span class="entry__org-sub">Global Technology &amp; Business Center</span>
                                 </h3>
+                                <p class="entry__date">
+                                    <span class="en">Feb 2023 — Present</span>
+                                    <span class="es">Feb 2023 — Actualidad</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Software Engineer, IPTSE CAE · Mexico City</span>
+                                <span class="es">Ingeniero de Software, IPTSE CAE · Ciudad de México</span>
+                            </p>
 
-                                <h5>Code Mentoring Workshop UX / UI </h5>
-                            </div> <!-- /.experience__title -->
-                            <span class="experience__date"> February 2023 </span>
+                            <ul class="bullets">
+                                <li class="en">Build and maintain the Python automation that generates CAE PowerTrain virtual
+                                    testing reports, replacing manual report assembly for the simulation teams.</li>
+                                <li class="es">Desarrollo y mantengo la automatización en Python que genera los reportes de
+                                    pruebas virtuales CAE PowerTrain, sustituyendo el armado manual de reportes de los equipos
+                                    de simulación.</li>
 
-                            <ul class="experience__info">
+                                <li class="en">Develop Microsoft Power Apps workflows wired to Planner and SharePoint
+                                    connectors to automate internal engineering processes.</li>
+                                <li class="es">Desarrollo flujos en Microsoft Power Apps conectados a Planner y SharePoint para
+                                    automatizar procesos internos de ingeniería.</li>
 
-                                <li>Instructor a UX / UI bootcamp group into Code Web Programming.</li>
-                                <li>Design and Prototype Figma Frame with Responsive behavior. </li>
-                                <li>Working with Visual Studio Code and Github. <a href="https://www.ironhack.com/en/ux-ui-design" style="color: Purple;">INFO LINK <a></li> 
+                                <li class="en">Design integrations between hardware product systems and internal engineering
+                                    applications, unifying data across previously disconnected teams.</li>
+                                <li class="es">Diseño integraciones entre sistemas de producto de hardware y aplicaciones
+                                    internas de ingeniería, unificando datos entre equipos antes desconectados.</li>
 
+                                <li class="en">Deliver custom Python and JavaScript tooling scoped directly with internal
+                                    customers, from requirements through production release.</li>
+                                <li class="es">Entrego herramientas a la medida en Python y JavaScript definidas directamente
+                                    con los usuarios internos, desde requerimientos hasta liberación a producción.</li>
 
-                            </ul> <!-- /.experience__info -->
+                                <li class="en">Enforce PEP-8, clean-code and SOLID standards across the codebase through peer
+                                    reviews and refactoring proposals.</li>
+                                <li class="es">Aplico estándares PEP-8, clean code y SOLID en el código mediante revisiones
+                                    entre pares y propuestas de refactorización.</li>
 
-                        </div> <!-- /.experience -->
-                        <div class="experience">
+                                <li class="en">Document architecture and results in Jupyter Notebooks and Figma prototypes, and
+                                    report weekly progress, blockers and findings to the team lead.</li>
+                                <li class="es">Documento arquitectura y resultados en Jupyter Notebooks y prototipos de Figma, y
+                                    reporto semanalmente avances, bloqueos y hallazgos al líder de equipo.</li>
+                            </ul>
 
-                            <div class="experience__title">
-                                <h3> <a href="https://epicqueen.com/" style="color: rgb(111, 111, 228);"> EPIC QUEEN <a>
-                                </a> / 
-                                <a href="https://fundaciontelevisa.org/" style="color: rgb(111, 111, 228);"> FUNDACION TELEVISA <a>
-                                </a> / 
-                                <a href="https://tecnolochicas.mx/" style="color: rgb(111, 111, 228);"> MICROSOFT <a>
-                                </a>
+                            <details class="more">
+                                <summary><span class="en">More detail</span><span class="es">Más detalle</span></summary>
+                                <ul class="bullets">
+                                    <li class="en">Participate in every phase of the SDLC under an agile workflow, tracking
+                                        issues and milestones on GitHub roadmaps.</li>
+                                    <li class="es">Participo en todas las fases del SDLC con metodología ágil, dando seguimiento
+                                        a issues y milestones en roadmaps de GitHub.</li>
+
+                                    <li class="en">Prototype a control sub-module for smart signaling lighting applied to
+                                        automotive use cases.</li>
+                                    <li class="es">Prototipo un submódulo de control para señalización lumínica inteligente
+                                        aplicada a casos de uso automotrices.</li>
+
+                                    <li class="en">Test applications before production release and troubleshoot user-reported
+                                        issues.</li>
+                                    <li class="es">Pruebo aplicaciones antes de su liberación a producción y resuelvo incidencias
+                                        reportadas por los usuarios.</li>
+
+                                    <li class="en">Produce technical documentation, requirement records and specifications on
+                                        request.</li>
+                                    <li class="es">Genero documentación técnica, registros de requerimientos y especificaciones
+                                        cuando se solicitan.</li>
+                                </ul>
+                            </details>
+
+                            <ul class="tags">
+                                <li>Python</li>
+                                <li>JavaScript</li>
+                                <li>Power Apps</li>
+                                <li>SharePoint</li>
+                                <li>Jupyter</li>
+                                <li>Git</li>
+                                <li>Figma</li>
+                                <li>Agile</li>
+                            </ul>
+                        </li>
+
+                        <!-- EUM TECH -->
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    <a href="https://eumtech.com.mx/" target="_blank" rel="noopener">EUM Tech</a>
+                                    <span class="entry__org-sub">
+                                        <a href="https://www.parkingtip.com.mx/" target="_blank" rel="noopener">Parking Tip</a>
+                                    </span>
                                 </h3>
+                                <p class="entry__date">
+                                    <span class="en">Dec 2021 — Feb 2023</span>
+                                    <span class="es">Dic 2021 — Feb 2023</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Developer Engineer, Engineering Department · Mexico City</span>
+                                <span class="es">Ingeniero Desarrollador, Departamento de Ingeniería · Ciudad de México</span>
+                            </p>
 
-                                <h5><span> Code Mentoring Workshop Web <br> Programming </span> </h5>
-                            </div> <!-- /.experience__title -->
-                            <span class="experience__date"> October 2022 - November 2022 </span>
+                            <ul class="bullets">
+                                <li class="en">Extended and integrated the company API across the full product suite, unifying
+                                    hardware devices with the web applications that controlled them.</li>
+                                <li class="es">Extendí e integré la API de la empresa con toda la suite de productos, unificando
+                                    los dispositivos de hardware con las aplicaciones web que los controlaban.</li>
 
-                            <ul class="experience__info">
+                                <li class="en">Built a Python object-oriented sub-module driving smart signaling lighting over
+                                    serial-port communication with the hardware firmware.</li>
+                                <li class="es">Construí un submódulo en Python orientado a objetos para controlar señalización
+                                    lumínica inteligente vía comunicación por puerto serial con el firmware.</li>
 
-                                <li>Mentoring a "Tecnolochicas" woman group into Web Programming.</li>
-                                <li>Coding HTML + CSS + Javascript. </li>
-                                <li>Working with Visual Studio Code and Github. <a href="https://informe.fundaciontelevisa.org/informe2022/aliados.html" style="color: Purple;">INFO LINK <a></li> 
+                                <li class="en">Implemented real-time WebSocket channels between JavaScript clients and Python
+                                    services to stream live device state.</li>
+                                <li class="es">Implementé canales WebSocket en tiempo real entre clientes JavaScript y servicios
+                                    Python para transmitir el estado de los dispositivos.</li>
 
+                                <li class="en">Shipped new MVC capabilities in Django spanning both back-end and front-end
+                                    functionality.</li>
+                                <li class="es">Liberé nuevas capacidades MVC en Django cubriendo funcionalidad de back-end y
+                                    front-end.</li>
 
-                            </ul> <!-- /.experience__info -->
+                                <li class="en">Administered remote servers over SSH, tuning Apache behaviour to validate data
+                                    correlation for the Walmart account.</li>
+                                <li class="es">Administré servidores remotos por SSH, ajustando el comportamiento de Apache para
+                                    validar la correlación de datos de la cuenta Walmart.</li>
 
-                        </div> <!-- /.experience -->
-                        <div class="experience">
+                                <li class="en">Trained new hires on the company development process and provided direct
+                                    technical support to customers on delivered work.</li>
+                                <li class="es">Capacité a nuevos ingenieros en el proceso de desarrollo de la empresa y di
+                                    soporte técnico directo a clientes sobre los desarrollos entregados.</li>
+                            </ul>
 
-                            <div class="experience__title">
-                                <h3> <a href="https://eumtech.com.mx/" style="color: rgb(111, 111, 228);"> EUM WALMART <a>
-                                </a> 
+                            <details class="more">
+                                <summary><span class="en">More detail</span><span class="es">Más detalle</span></summary>
+                                <ul class="bullets">
+                                    <li class="en">Upgraded and cloned staging systems into production environments.</li>
+                                    <li class="es">Actualicé y cloné sistemas de staging hacia entornos de producción.</li>
+
+                                    <li class="en">Designed UI/UX infrastructure and Figma prototypes for customer-facing
+                                        apps.</li>
+                                    <li class="es">Diseñé la infraestructura UI/UX y prototipos en Figma para las apps de
+                                        cara al cliente.</li>
+
+                                    <li class="en">Documented Python and JavaScript modules in Jupyter Notebooks for internal
+                                        hand-off.</li>
+                                    <li class="es">Documenté módulos de Python y JavaScript en Jupyter Notebooks para la
+                                        transferencia interna.</li>
+                                </ul>
+                            </details>
+
+                            <ul class="tags">
+                                <li>Python</li>
+                                <li>Django</li>
+                                <li>JavaScript</li>
+                                <li>WebSockets</li>
+                                <li>REST API</li>
+                                <li>Apache</li>
+                                <li>SSH</li>
+                                <li>Figma</li>
+                            </ul>
+                        </li>
+
+                        <!-- LAMBDA MOBILITY -->
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    <a href="http://lambdamobility.com/" target="_blank" rel="noopener">Lambda Mobility</a>
                                 </h3>
-                                <h5><span> Internal Crash Course Coding Workshop with Javascript and Python </span> </h5>
-                            </div> <!-- /.experience__title -->
-                            <span class="experience__date"> September 2022 - January 2023 </span>
+                                <p class="entry__date">
+                                    <span class="en">May 2022 — 2024</span>
+                                    <span class="es">May 2022 — 2024</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Developer Engineer &amp; Co-Founder · Mexico City</span>
+                                <span class="es">Ingeniero Desarrollador y Cofundador · Ciudad de México</span>
+                            </p>
 
-                            <ul class="experience__info">
+                            <ul class="bullets">
+                                <li class="en">Co-founded a real-time tracking venture and led both hardware and software
+                                    development end to end.</li>
+                                <li class="es">Cofundé una empresa de rastreo en tiempo real y lideré el desarrollo completo de
+                                    hardware y software.</li>
 
-                                <li>Training the engineering team to get the neccesary coding skills.</li>
-                                <li>Coding Oriented Object Programming project in Python. </li>
-                                <li>Coding nested objects with classes. </li>
-                                <li>Working with server and client websockets in Javascript and Node JS. </li>
-                                <li>Working with server and client websockets with Python server. </li>
-                                <li>Working with server and client websockets in ARM microcontrollers from ESPRESSIF model
-                                    ESP32" </li>
-                                <li>Automated processes with databases and Django.</li>
+                                <li class="en">Engineered indoor positioning over Ultra-Wideband radio, implementing
+                                    trilateration firmware in MicroPython and C++.</li>
+                                <li class="es">Desarrollé posicionamiento en interiores con radio Ultra-Wideband, implementando
+                                    el firmware de trilateración en MicroPython y C++.</li>
 
-                            </ul> <!-- /.experience__info -->
+                                <li class="en">Designed the electronic systems behind the tracking devices.</li>
+                                <li class="es">Diseñé los sistemas electrónicos de los dispositivos de rastreo.</li>
 
-                        </div> <!-- /.experience -->
-                        <div class="experience">
-                            <div class="experience__title">
-                                <h3> <a href="https://2020.talent-land.lat/on-demand/internet-of-things-en-casa-iot/" style="color: rgb(111, 111, 228);"> TALENT LAND - TALENT REPUBLIC <a>
-                                </a> /
-                                <a href="https://streamr.network/" style="color: rgb(111, 111, 228);">STREAMR <a>
-                                </a> 
+                                <li class="en">Built the public-transport model application on Django MVC with WebSocket
+                                    communication for live vehicle position.</li>
+                                <li class="es">Construí la aplicación modelo de transporte público sobre Django MVC con
+                                    comunicación WebSocket para la posición de vehículos en vivo.</li>
+                            </ul>
+
+                            <ul class="tags">
+                                <li>MicroPython</li>
+                                <li>C++</li>
+                                <li>UWB / RF</li>
+                                <li>Django</li>
+                                <li>WebSockets</li>
+                                <li>PCB Design</li>
+                            </ul>
+                        </li>
+
+                        <!-- WALTEM HEALTH -->
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">Waltem Health</h3>
+                                <p class="entry__date">
+                                    <span class="en">Sep 2019 — Feb 2020</span>
+                                    <span class="es">Sep 2019 — Feb 2020</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Developer Engineer, Engineering Department · Mexico City</span>
+                                <span class="es">Ingeniero Desarrollador, Departamento de Ingeniería · Ciudad de México</span>
+                            </p>
+
+                            <ul class="bullets">
+                                <li class="en">Developed Python algorithms to process ECG sensor data for medical hardware.</li>
+                                <li class="es">Desarrollé algoritmos en Python para procesar datos de sensores ECG en hardware
+                                    médico.</li>
+
+                                <li class="en">Built Raspberry Pi–to–cloud pipelines that pushed measurement payloads over HTTP
+                                    requests.</li>
+                                <li class="es">Construí pipelines de Raspberry Pi a la nube que enviaban las mediciones mediante
+                                    peticiones HTTP.</li>
+
+                                <li class="en">Reverse-engineered existing medical devices to enable an in-house hardware
+                                    implementation.</li>
+                                <li class="es">Realicé ingeniería inversa de dispositivos médicos existentes para habilitar una
+                                    implementación de hardware propia.</li>
+
+                                <li class="en">Consulted across departments to bridge software and hardware into a single
+                                    solution for healthcare customers, documenting recurring issues and their fixes.</li>
+                                <li class="es">Asesoré a distintas áreas para unir software y hardware en una sola solución para
+                                    clientes del sector salud, documentando incidencias recurrentes y sus soluciones.</li>
+                            </ul>
+
+                            <ul class="tags">
+                                <li>Python</li>
+                                <li>Raspberry Pi</li>
+                                <li>HTTP / REST</li>
+                                <li>ECG / Sensors</li>
+                            </ul>
+                        </li>
+
+                        <!-- STREAMR -->
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    <a href="https://streamr.network/" target="_blank" rel="noopener">Streamr Inc.</a>
                                 </h3>
-                                <h5><span> Online Coding Ed Tech Workshop </span> </h5>
-                            </div> <!-- /.experience__title -->
-                            <span class="experience__date"> November 2020 </span>
-                            <ul class="experience__info">
-                                <li>Training workshop using RUUVI beacons, an open source BLE sensors to send enviromental
-                                    information to the Streamr blockchain marketplace crypto cloud. Doing this with coding
-                                    Python on Raspberry Pi to capture the bluetooth messages and manage the data
-                                    interpretation.</li>
-                                <li>Visualization data with the online React app Plotly.
-                                    <a href="https://youtu.be/EJZArkKHOj8" style="color: blue;">YOUTUBE LINK <a>
+                                <p class="entry__date">
+                                    <span class="en">Mar 2019 — 2024</span>
+                                    <span class="es">Mar 2019 — 2024</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Freelance Engineer &amp; Technology Evangelist · Switzerland (remote)</span>
+                                <span class="es">Ingeniero Freelance y Evangelista Técnico · Suiza (remoto)</span>
+                            </p>
+
+                            <ul class="bullets">
+                                <li class="en">Resolved integration issues between the Streamr API and IoT devices publishing to
+                                    the blockchain data marketplace.</li>
+                                <li class="es">Resolví problemas de integración entre la API de Streamr y dispositivos IoT que
+                                    publicaban en el marketplace de datos blockchain.</li>
+
+                                <li class="en">Authored and delivered a Python crash course on Raspberry Pi and ESP32 boards,
+                                    taking developers from raw sensor to live cloud stream.</li>
+                                <li class="es">Diseñé e impartí un curso intensivo de Python sobre Raspberry Pi y placas ESP32,
+                                    llevando a los desarrolladores del sensor al stream en la nube.</li>
+
+                                <li class="en">Structured and streamed sensor data to the Streamr network with Python.</li>
+                                <li class="es">Estructuré y transmití datos de sensores a la red de Streamr con Python.</li>
+
+                                <li class="en">Represented the platform at technology events, mentoring students hands-on
+                                    through the hardware modules.</li>
+                                <li class="es">Representé a la plataforma en eventos de tecnología, acompañando a estudiantes de
+                                    forma práctica en los módulos de hardware.</li>
+
+                                <li class="en">Automated repository and release workflows with Git.</li>
+                                <li class="es">Automaticé flujos de repositorio y liberación con Git.</li>
+                            </ul>
+
+                            <ul class="tags">
+                                <li>Python</li>
+                                <li>Raspberry Pi</li>
+                                <li>ESP32</li>
+                                <li>Blockchain / IoT</li>
+                                <li>Git</li>
+                            </ul>
+                        </li>
+
+                    </ol>
+                </section>
+
+                <!-- ============================ EDUCATION ============================ -->
+                <section class="section" id="education">
+                    <h2 class="section__title">
+                        <span class="en">Education</span><span class="es">Educación</span>
+                    </h2>
+
+                    <ol class="timeline">
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    <span class="en">UNAM — Center for Applied Physics and Advanced Technology (CFATA)</span>
+                                    <span class="es">UNAM — Centro de Física Aplicada y Tecnología Avanzada (CFATA)</span>
+                                </h3>
+                                <p class="entry__date">
+                                    <span class="en">Graduated May 2016</span>
+                                    <span class="es">Titulado Mayo 2016</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Bachelor of Technology · Querétaro / Mexico City</span>
+                                <span class="es">Licenciatura en Tecnología · Querétaro / Ciudad de México</span>
+                            </p>
+                            <ul class="bullets">
+                                <li class="en">Science and engineering framework with specialisations in physics of energy,
+                                    electronics, programming and robotics.</li>
+                                <li class="es">Formación en ciencia e ingeniería con especialidades en física de la energía,
+                                    electrónica, programación y robótica.</li>
+                            </ul>
+                        </li>
+
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">MITx — Massachusetts Institute of Technology (edX)</h3>
+                                <p class="entry__date">2024</p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">6.00.1x — Introduction to Computer Science and Programming Using Python</span>
+                                <span class="es">6.00.1x — Introduction to Computer Science and Programming Using Python</span>
+                            </p>
+                            <ul class="bullets">
+                                <li>
+                                    <span class="en">Verified certificate, issued by edX.</span>
+                                    <span class="es">Certificado verificado, emitido por edX.</span>
+                                    <a class="ext"
+                                        href="https://courses.edx.org/certificates/3fa06712cd6d4a958d91b57e9aebf2d1"
+                                        target="_blank" rel="noopener">
+                                        <span class="en">View</span><span class="es">Ver</span>
+                                        <svg class="icon icon--sm"><use href="#i-link" /></svg>
+                                    </a>
                                 </li>
-                            </ul> <!-- /.experience__info -->
-                        </div> <!-- /.experience TALENT LAND / STREAMR -->
+                            </ul>
+                        </li>
 
-                        <div class="experience">
-                            <div class="experience__title">
-                                <h3> <a href="https://cler.com.mx" style="color: rgb(111, 111, 228);"> MICROSOFT / OPENDEVCAMP <a>
-                                </a> 
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">Codecademy</h3>
+                                <p class="entry__date">2021 — 2022</p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Career paths · Online</span>
+                                <span class="es">Rutas de carrera · En línea</span>
+                            </p>
+                            <ul class="bullets">
+                                <li class="en">Python 3, Django, JavaScript, React and UI/UX design paths.</li>
+                                <li class="es">Rutas de Python 3, Django, JavaScript, React y diseño UI/UX.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </section>
+
+                <!-- ============================ TEACHING ============================ -->
+                <section class="section" id="teaching">
+                    <h2 class="section__title">
+                        <span class="en">Teaching &amp; Workshops</span>
+                        <span class="es">Docencia y Talleres</span>
+                    </h2>
+                    <p class="section__note">
+                        <span class="en">Eight years of hands-on instruction in Python, IoT and web development across
+                            bootcamps, corporate training and public tech events.</span>
+                        <span class="es">Ocho años impartiendo formación práctica en Python, IoT y desarrollo web en bootcamps,
+                            capacitación corporativa y eventos públicos de tecnología.</span>
+                    </p>
+
+                    <ol class="timeline timeline--compact">
+
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    <a href="https://www.ironhack.com/en" target="_blank" rel="noopener">Ironhack México</a>
                                 </h3>
-                                <h5><span> Ed Tech Workshop With Azure </span> </h5>
-                            </div> <!-- /.experience__title -->
-                            <span class="experience__date"> March 2020 - Hotel Galeria Plaza Reforma CDMX </span>
-                            <ul class="experience__info">
-                                <li>A workshop using Open Source Technologies in the INTERNET OF THINGS area organized with
-                                    Microsoft and AMESOL. </li>
-                                <li>App implementation using the Azure Cloud connected with Hardware. </li>
-                                <li>Coding with Python to manage every functionality with Raspberry Pi as a "Gateway".
+                                <p class="entry__date">
+                                    <span class="en">Feb 2023</span><span class="es">Feb 2023</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Instructor — UX/UI Bootcamp, Web Programming</span>
+                                <span class="es">Instructor — Bootcamp UX/UI, Programación Web</span>
+                            </p>
+                            <ul class="bullets">
+                                <li class="en">Taught a UX/UI bootcamp cohort the fundamentals of web programming, responsive
+                                    Figma prototyping and a VS Code + GitHub workflow.
+                                    <a class="ext" href="https://www.ironhack.com/en/ux-ui-design" target="_blank"
+                                        rel="noopener">Program<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                                </li>
+                                <li class="es">Enseñé a una generación del bootcamp de UX/UI los fundamentos de programación web,
+                                    prototipado responsivo en Figma y el flujo de trabajo con VS Code y GitHub.
+                                    <a class="ext" href="https://www.ironhack.com/en/ux-ui-design" target="_blank"
+                                        rel="noopener">Programa<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    <a href="https://tecnolochicas.mx/" target="_blank" rel="noopener">Tecnolochicas</a>
+                                    <span class="entry__org-sub">Epic Queen · Fundación Televisa · Microsoft</span>
+                                </h3>
+                                <p class="entry__date">
+                                    <span class="en">Oct — Nov 2022</span><span class="es">Oct — Nov 2022</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Mentor — Web Programming</span>
+                                <span class="es">Mentor — Programación Web</span>
+                            </p>
+                            <ul class="bullets">
+                                <li class="en">Mentored a women-in-tech cohort through HTML, CSS and JavaScript, working in VS
+                                    Code and GitHub.
+                                    <a class="ext" href="https://informe.fundaciontelevisa.org/informe2022/aliados.html"
+                                        target="_blank" rel="noopener">Report<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                                </li>
+                                <li class="es">Acompañé a una generación de mujeres en tecnología a través de HTML, CSS y
+                                    JavaScript, trabajando con VS Code y GitHub.
+                                    <a class="ext" href="https://informe.fundaciontelevisa.org/informe2022/aliados.html"
+                                        target="_blank" rel="noopener">Informe<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    <a href="https://eumtech.com.mx/" target="_blank" rel="noopener">EUM Tech</a>
+                                    <span class="entry__org-sub">Walmart account</span>
+                                </h3>
+                                <p class="entry__date">
+                                    <span class="en">Sep 2022 — Jan 2023</span><span class="es">Sep 2022 — Ene 2023</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Internal Coding Crash Course — Python &amp; JavaScript</span>
+                                <span class="es">Curso Intensivo Interno de Código — Python y JavaScript</span>
+                            </p>
+                            <ul class="bullets">
+                                <li class="en">Trained the engineering team in Python object-oriented programming, nested class
+                                    models and Django database automation.</li>
+                                <li class="es">Capacité al equipo de ingeniería en programación orientada a objetos con Python,
+                                    modelos de clases anidadas y automatización de bases de datos con Django.</li>
+
+                                <li class="en">Covered client/server WebSockets across Node.js, Python and ESP32 (Espressif ARM)
+                                    targets.</li>
+                                <li class="es">Cubrí WebSockets cliente/servidor en Node.js, Python y microcontroladores ESP32
+                                    (ARM Espressif).</li>
+                            </ul>
+                        </li>
+
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    <a href="https://2020.talent-land.lat/on-demand/internet-of-things-en-casa-iot/"
+                                        target="_blank" rel="noopener">Talent Land / Talent Republic</a>
+                                    <span class="entry__org-sub">with Streamr</span>
+                                </h3>
+                                <p class="entry__date">
+                                    <span class="en">Nov 2020</span><span class="es">Nov 2020</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Speaker — Online IoT Workshop</span>
+                                <span class="es">Ponente — Taller de IoT en línea</span>
+                            </p>
+                            <ul class="bullets">
+                                <li class="en">Taught an end-to-end IoT pipeline: RUUVI open-source BLE sensors captured with
+                                    Python on Raspberry Pi, streamed to the Streamr blockchain marketplace and visualised in a
+                                    Plotly React app.
+                                    <a class="ext" href="https://youtu.be/EJZArkKHOj8" target="_blank"
+                                        rel="noopener">Recording<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                                </li>
+                                <li class="es">Enseñé un pipeline IoT completo: sensores BLE de código abierto RUUVI capturados
+                                    con Python en Raspberry Pi, transmitidos al marketplace blockchain de Streamr y visualizados
+                                    en una app de React con Plotly.
+                                    <a class="ext" href="https://youtu.be/EJZArkKHOj8" target="_blank"
+                                        rel="noopener">Grabación<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
                                     <a href="https://cler.com.mx/Azure-OpenDevCamp/OpenDevCamp-Marzo.html#speakers"
-                                        style="color: blue;">INFO LINK <a>
-                                </li>
-                            </ul> <!-- /.experience__info -->
-                        </div> <!-- /.experience MICROSOFT / OPENDEVCAMP -->
-                        <div class="experience">
-                            <div class="experience__title">
-                                <h3> <a href="https://labs.nehenemi.net/" style="color: rgb(111, 111, 228);"> NEHENEMI LABS <a>
-                                </a> 
+                                        target="_blank" rel="noopener">Microsoft OpenDevCamp</a>
+                                    <span class="entry__org-sub">with AMESOL</span>
                                 </h3>
-                                
-                                <h5><span> Raspberry Pi Day Workshop </span> </h5>
-                            </div> <!-- /.experience__title -->
-                            <span class="experience__date"> MARCH 2019 - Centro Cultural Gomez Morin </span>
-                            <ul class="experience__info">
-                                <li>A workshop teaching about Open Source Tech and cellebrating the Raspi Day.
-                                    <a href="https://www.facebook.com/events/416749552490254/" style="color: blue;">INFO LINK 
-                                        <a>
-                                    <a href="https://www.facebook.com/nehenemilabs/photos/2349070272041780" style="color: blue;">INFO LINK 
-                                        <a>
-                                </li>
-                            </ul> <!-- /.experience__info -->
-                        </div> <!-- /.experience NEHENEMI LABS -->
-                        <div class="experience">
-                            <div class="experience__title">
-                                <h3> <a href="http://educacionmaker.org" style="color: rgb(111, 111, 228);"> ENCUENTRO EDUCACION MAKER MEXICO <a>
-                                </a> /
-                                <a href="https://www.facebook.com/Edukreativos/" style="color: rgb(111, 111, 228);"> EDUKREATIVOS <a>
-                                </a> 
+                                <p class="entry__date">
+                                    <span class="en">Mar 2020</span><span class="es">Mar 2020</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Speaker — Azure IoT Workshop · Hotel Galería Plaza Reforma, Mexico City</span>
+                                <span class="es">Ponente — Taller de IoT con Azure · Hotel Galería Plaza Reforma, CDMX</span>
+                            </p>
+                            <ul class="bullets">
+                                <li class="en">Ran an open-source IoT workshop connecting hardware to Azure Cloud, using a
+                                    Raspberry Pi gateway programmed in Python.</li>
+                                <li class="es">Impartí un taller de IoT con tecnologías de código abierto conectando hardware a
+                                    Azure Cloud, usando una Raspberry Pi como gateway programada en Python.</li>
+                            </ul>
+                        </li>
+
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    <a href="https://www.talent-land.mx/" target="_blank" rel="noopener">Talent Land</a>
                                 </h3>
-                                <h3>  /  </h3>
-                                
-                                <h5><span> Wearables Workshop </span> </h5>
-                            </div> <!-- /.experience__title -->
-                            <span class="experience__date"> August 2018 - Colegio Hebreo Maguen David </span>
-                            <ul class="experience__info">
-                                <li>A workshop using ATTINY Atmel microcontrollers to control lights in a brazalet.
-                                    <a href="http://educacionmaker.org/encuentro/programa.html" style="color: blue;">INFO
-                                        LINK <a>
-                                </li>
-                            </ul> <!-- /.experience__info -->
-                        </div> <!-- /.experience -->
-                        <div class="experience">
-                            <div class="experience__title">
-                                <h3> <a href="https://www.talent-land.mx/" style="color: rgb(111, 111, 228);"> TALENT LAND <a>
-                                </a>
-                                </h3>
-                                <h5><span> Internet of Things Workshop </span> </h5>
-                            </div> <!-- /.experience__title -->
-                            <span class="experience__date"> August 2019 - Centro de ConveNciones Guadalajara. </span>
-                            <ul class="experience__info">
-                                <li>A workshop using ATTINY Atmel microcontrollers to control lights in a brazalet. <a
+                                <p class="entry__date">
+                                    <span class="en">Aug 2019</span><span class="es">Ago 2019</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Speaker — Internet of Things · Guadalajara Convention Center</span>
+                                <span class="es">Ponente — Internet de las Cosas · Centro de Convenciones Guadalajara</span>
+                            </p>
+                            <ul class="bullets">
+                                <li class="en">Delivered "Percibiendo la realidad con Raspberry Pi", a two-part session on
+                                    sensing the physical world with Raspberry Pi.
+                                    <a class="ext"
                                         href="https://jaliscotalentland2019.sched.com/event/OMJR/percibiendo-la-realidad-con-raspberry-pi-eric-margay-1-de-2"
-                                        style="color: blue;">INFO LINK <a> </li>
-                            </ul> <!-- /.experience__info -->
-                        </div> <!-- /.experience -->
-                    </div>
+                                        target="_blank" rel="noopener">Schedule<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                                </li>
+                                <li class="es">Impartí "Percibiendo la realidad con Raspberry Pi", una sesión en dos partes sobre
+                                    sensado del mundo físico con Raspberry Pi.
+                                    <a class="ext"
+                                        href="https://jaliscotalentland2019.sched.com/event/OMJR/percibiendo-la-realidad-con-raspberry-pi-eric-margay-1-de-2"
+                                        target="_blank" rel="noopener">Programa<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                                </li>
+                            </ul>
+                        </li>
 
-                    <div class="experience-list"> <!-- Artistic Experience -->
-                        <h2>Artistic Experience</h2>
-                        <div class="experience">
-                            <div class="experience__title">
-                                <h3> <a href="https://www.instagram.com/a1.laboratorio.fx/" style="color: rgb(111, 111, 228);"> A1 LABORATORIO FX <a>
-                                </a>
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    <a href="https://labs.nehenemi.net/" target="_blank" rel="noopener">Nehenemi Labs</a>
                                 </h3>
+                                <p class="entry__date">
+                                    <span class="en">Mar 2019</span><span class="es">Mar 2019</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Instructor — Raspberry Pi Day · Centro Cultural Gómez Morín</span>
+                                <span class="es">Instructor — Raspberry Pi Day · Centro Cultural Gómez Morín</span>
+                            </p>
+                            <ul class="bullets">
+                                <li class="en">Taught open-source hardware fundamentals at the community Raspberry Pi Day
+                                    celebration.
+                                    <a class="ext" href="https://www.facebook.com/events/416749552490254/" target="_blank"
+                                        rel="noopener">Event<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                                </li>
+                                <li class="es">Enseñé fundamentos de hardware de código abierto en la celebración comunitaria del
+                                    Raspberry Pi Day.
+                                    <a class="ext" href="https://www.facebook.com/events/416749552490254/" target="_blank"
+                                        rel="noopener">Evento<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                                </li>
+                            </ul>
+                        </li>
 
-                                
-                                <h5><span> Product Design Engineer </span> &ndash; México City </h5>
-                            </div> <!-- /.experience__title -->
-                            <span class="experience__date">JULY 2022 - SEPTEMBER 2022</span>
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    <a href="http://educacionmaker.org" target="_blank" rel="noopener">Encuentro Educación Maker
+                                        México</a>
+                                    <span class="entry__org-sub">with Edukreativos</span>
+                                </h3>
+                                <p class="entry__date">
+                                    <span class="en">Aug 2018</span><span class="es">Ago 2018</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Instructor — Wearables Workshop · Colegio Hebreo Maguen David</span>
+                                <span class="es">Instructor — Taller de Wearables · Colegio Hebreo Maguen David</span>
+                            </p>
+                            <ul class="bullets">
+                                <li class="en">Taught wearable electronics using ATTINY Atmel microcontrollers to drive a
+                                    programmable light bracelet.
+                                    <a class="ext" href="http://educacionmaker.org/encuentro/programa.html" target="_blank"
+                                        rel="noopener">Program<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                                </li>
+                                <li class="es">Enseñé electrónica wearable usando microcontroladores ATTINY de Atmel para
+                                    controlar un brazalete de luz programable.
+                                    <a class="ext" href="http://educacionmaker.org/encuentro/programa.html" target="_blank"
+                                        rel="noopener">Programa<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                                </li>
+                            </ul>
+                        </li>
 
-                            <ul class="experience__info">
-                                <li> Lighting product design wearable to fit on the skull brain of a character prop. 
-                                    The hardware implementation used an ESP32 as a core of the lighting control with a 
-                                    rechargable energy regulator. The code used lets choose some light patterns to care of 
-                                    the director art decisitions in the cinematographic set call. [ NO LINK FOR COPYRIGHTS ]
+                    </ol>
+                </section>
+
+                <!-- ============================ CREATIVE ============================ -->
+                <section class="section" id="creative">
+                    <h2 class="section__title">
+                        <span class="en">Creative Engineering</span>
+                        <span class="es">Ingeniería Creativa</span>
+                    </h2>
+                    <p class="section__note">
+                        <span class="en">Commissioned work applying embedded systems to art, film and live performance.</span>
+                        <span class="es">Trabajo por encargo aplicando sistemas embebidos al arte, el cine y el performance en
+                            vivo.</span>
+                    </p>
+
+                    <ol class="timeline timeline--compact">
+
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    <a href="https://www.instagram.com/a1.laboratorio.fx/" target="_blank" rel="noopener">A1
+                                        Laboratorio FX</a>
+                                </h3>
+                                <p class="entry__date">
+                                    <span class="en">Jul — Sep 2022</span><span class="es">Jul — Sep 2022</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Product Design Engineer · Mexico City</span>
+                                <span class="es">Ingeniero de Diseño de Producto · Ciudad de México</span>
+                            </p>
+                            <ul class="bullets">
+                                <li class="en">Designed a wearable lighting product fitted inside a character prop skull, built
+                                    around an ESP32 core with a rechargeable power regulator and selectable light patterns so the
+                                    art director could change the look on set.</li>
+                                <li class="es">Diseñé un producto de iluminación wearable montado dentro del cráneo de un prop de
+                                    personaje, con un ESP32 como núcleo, regulador de energía recargable y patrones de luz
+                                    seleccionables para que el director de arte pudiera cambiarlos en el set.</li>
+
+                                <li class="en">Programmed an interactive JavaScript invitation for the lab's anniversary.
+                                    <a class="ext" href="https://codepen.io/ericmargay/full/yLKQJzW" target="_blank"
+                                        rel="noopener">CodePen<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                                </li>
+                                <li class="es">Programé una invitación interactiva en JavaScript para el aniversario del
+                                    laboratorio.
+                                    <a class="ext" href="https://codepen.io/ericmargay/full/yLKQJzW" target="_blank"
+                                        rel="noopener">CodePen<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                                </li>
+                            </ul>
+                            <ul class="tags">
+                                <li>ESP32</li>
+                                <li>JavaScript</li>
+                                <li>Power Electronics</li>
+                            </ul>
+                        </li>
+
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    <a href="http://bioscenica.mx/" target="_blank" rel="noopener">Bioscénica</a>
+                                    <span class="entry__org-sub">Hierophania Lab · Hemispheric Institute</span>
+                                </h3>
+                                <p class="entry__date">
+                                    <span class="en">Jun 2019</span><span class="es">Jun 2019</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Creative Light &amp; Sound Coding · Mexico City</span>
+                                <span class="es">Programación Creativa de Luz y Sonido · Ciudad de México</span>
+                            </p>
+                            <ul class="bullets">
+                                <li class="en">Coded the light behaviour of the "Suavicrema" façade at Centro de Cultura Digital
+                                    for <em>Empatía 5.1</em>, a site-specific technoshamanic ritual: a wearable ESP32 heartbeat
+                                    sensor streamed over WebSockets, UDP and OSC into a VVVV light server that turned the
+                                    audience's pulse into the building's lighting in real time.
+                                    <a class="ext" href="http://bioscenica.mx/empatia-5-1/" target="_blank"
+                                        rel="noopener">Project<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                                </li>
+                                <li class="es">Programé el comportamiento lumínico de la fachada "Suavicrema" del Centro de
+                                    Cultura Digital para <em>Empatía 5.1</em>, un ritual tecnochamánico de sitio específico: un
+                                    sensor de latido ESP32 wearable transmitía por WebSockets, UDP y OSC a un servidor de luz
+                                    VVVV que convertía el pulso del público en la iluminación del edificio en tiempo real.
+                                    <a class="ext" href="http://bioscenica.mx/empatia-5-1/" target="_blank"
+                                        rel="noopener">Proyecto<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
                                 </li>
 
-                                <li> Interactive code invitation design fo the anniversary of the lab, interactivity proggramed in Javascript. 
-                                    <a href="https://codepen.io/ericmargay/full/yLKQJzW"> [ CODEPEN ]</a>
-                                </li>
+                                <li class="en">Built a digital sculpture driven by cosmic-ray data, converting the readings into
+                                    light rendered in a VR headset.</li>
+                                <li class="es">Construí una escultura digital alimentada por datos de rayos cósmicos, convirtiendo
+                                    las lecturas en luz renderizada en un visor de realidad virtual.</li>
+                            </ul>
+                            <ul class="tags">
+                                <li>ESP32</li>
+                                <li>WebSockets</li>
+                                <li>OSC / UDP</li>
+                                <li>VVVV</li>
+                                <li>VR</li>
+                            </ul>
+                        </li>
 
-                            </ul> <!-- /.experience__info -->
+                    </ol>
+                </section>
 
-                        </div> <!-- /.experience -->
-                        <div class="experience">
+            </div><!-- /.layout__main -->
 
-                            <div class="experience__title">
-                                <h3> <a href="http://bioscenica.mx/" style="color: rgb(111, 111, 228);"> BIOSCÉNICA - HIEROPHANIA LAB - HEMISPHERIC INSTITUTE <a>
-                                </a>
-                                <h5><span> Creative Light <br> & Sound Coding </span> &ndash; <br> México City </h5>
-                            </div> <!-- /.experience__title -->
+            <aside class="layout__aside">
 
-                            <span class="experience__date"> JUNE 2019 </span>
+                <!-- ============================ SKILLS ============================ -->
+                <section class="card" id="skills">
+                    <h2 class="card__title">
+                        <span class="en">Technical Skills</span><span class="es">Habilidades Técnicas</span>
+                    </h2>
 
-                            <ul class="experience__info">
-                                <li> Collaborated with the Empaty 5.1 Concept, a Technochamanic Ritual for specific site performance.
-                                    Coding the light behavior of the "Suavicrema" Light Building of the "Centro de Cultura DIgital".
-                                    The art installation consist of the websocket communicating with UDP and OSC protocols with a 
-                                    ESP32 portable Heartbeat system and the server light machine with VVVV sofware to manage the light
-                                    and performance activaated with sensing the heart of the public during the event. Also, the light performance
-                                    was activated with the conversión of data into light. 
-                                    <a href="http://bioscenica.mx/empatia-5-1/"> [ WEBPAGE LINK ]</a>
-
-                                </li>
-
-                                <li> Digital Sculpture using Cosmic Rays as a data  code proggramed showing the conversion into light on VR Visor
-                                    <a href="http://bioscenica.mx/empatia-5-1/"> [ WEBPAGE LINK ]</a>
-                                </li>
-
-                            </ul> <!-- /.experience__info -->
-
-                        </div> <!-- /.experience -->
-                    </div> 
-
-                    <div class="experience-list"> <!-- Academic Education -->
-                        <h2>Academic Education</h2>
-                        <div class="experience">
-
-                            <div class="experience__title">
-                                <h3>Physics Applied Center and Advanced Technology - UNAM</h3>
-                                <h5>Querétaro - México City</h5>
-                            </div> <!-- /.experience__title -->
-
-                            <span class="experience__date">Graduated May 2016</span>
-
-                            <ul class="experience__info">
-
-                                <li>Bachelor of Technology.</li>
-                                <li>Framework of Science and Engineering.</li>
-                                <li>Specialities in physics of energy, electronics, programming and robotics. </li>
-
-                            </ul> <!-- /.experience__info -->
-
-                            <div class="experience__title">
-                                <h3>Codecademy - Bootcamp </h3>
-                                <h5>Online Web Career Paths - México City</h5>
-                            </div> <!-- /.experience__title -->
-
-                            <span class="experience__date">2021 - 2022</span>
-
-                            <ul class="experience__info">
-                                <li>Python 3</li>
-                                <li>Python with Django</li>
-                                <li>Javascript</li>
-                                <li>React Crash Course</li>
-                                <li>UI / UX</li>
-                                
-
-                        </div> <!-- /.experience -->
-
-                        <div class="experience__title">
-                            <h3>EDX - Massachusetts Institute of Technology </h3>
-                            <h5>MITx - México City</h5>
-                        </div> <!-- /.experience__title -->
-
-                        <span class="experience__date"> 2024 </span>
-
-                        <ul class="experience__info">
-                            <li> 
-                                <a href="https://courses.edx.org/certificates/3fa06712cd6d4a958d91b57e9aebf2d1"> 6.00.1x: Introduction to Computer Science and Programming Using Python </a>
-                            </li>
-                        </ul> <!-- /.experience__info -->
+                    <div class="skill-group">
+                        <h3><span class="en">Languages</span><span class="es">Lenguajes</span></h3>
+                        <p>Python · JavaScript · C++ · MicroPython · SQL · HTML · CSS</p>
                     </div>
 
-                </div> <!-- /.resume-body__left -->
+                    <div class="skill-group">
+                        <h3><span class="en">Frameworks &amp; Libraries</span><span class="es">Frameworks y Librerías</span></h3>
+                        <p>Django · Node.js · Express · React · Three.js · jQuery · Flexbox</p>
+                    </div>
 
-                <div class="resume-body__right">
+                    <div class="skill-group">
+                        <h3><span class="en">Hardware &amp; Embedded</span><span class="es">Hardware y Embebidos</span></h3>
+                        <p>Raspberry Pi · ESP32 (Espressif) · Atmel / ATTINY · Ultra-Wideband RF · BLE sensors · Serial &amp;
+                            WebSocket protocols · Arduino IDE</p>
+                    </div>
 
-                    <div class="skills">
-                        <h2>Main Skills</h2>
-                        <p> <strong> Software </strong><br> Python, HTML, CSS, JavaScript, C++, Django, Visual Studio Code, CLI, Shell and Arduino IDE.</p>
-                        <p> <strong> Hardware </strong><br> Raspberry PI, Atmel Microcontrollers, ESP32 Espressif module boards.</p>
-                        <p> <strong> Design </strong><br> Adobe Illustrator, Adobe Photoshop, Figma, Spline. </p>
-                    </div> <!-- /.skills -->
+                    <div class="skill-group">
+                        <h3><span class="en">Tools &amp; Platforms</span><span class="es">Herramientas y Plataformas</span></h3>
+                        <p>Git &amp; GitHub · VS Code · Jupyter · Conda · npm · Webpack · Jira · Microsoft Power Apps ·
+                            SharePoint · Azure · Apache · SSH · CLI / Shell</p>
+                    </div>
 
+                    <div class="skill-group">
+                        <h3><span class="en">Electronics &amp; Design</span><span class="es">Electrónica y Diseño</span></h3>
+                        <p>KiCad · Eagle · EasyEDA · Figma · Adobe Illustrator · Adobe Photoshop · Spline · Blender · Unity</p>
+                    </div>
 
-                    <div class="skills">
-                        <h2>Secondary Skills</h2>
-                        <p> <strong> Software </strong> <br> Conda Enviroment, NodeJS, Express, jQuery, ThreeJS, Flexbox, NPM, Github, NPM Webpack, SQL, Jira. </p>
-                        <p> <strong> Hardware </strong><br> EasyEda, Eagle, KiCad.</p>
-                        <p> <strong> Design </strong><br> Unity, Blender.</p>
+                    <div class="skill-group">
+                        <h3><span class="en">Practices</span><span class="es">Prácticas</span></h3>
+                        <p class="en">Agile · Full SDLC · Clean Code &amp; SOLID · PEP-8 · Code review · Technical documentation ·
+                            UI/UX prototyping</p>
+                        <p class="es">Ágil · SDLC completo · Clean Code y SOLID · PEP-8 · Revisión de código · Documentación
+                            técnica · Prototipado UI/UX</p>
+                    </div>
+                </section>
 
+                <!-- ============================ LANGUAGES ============================ -->
+                <section class="card" id="languages">
+                    <h2 class="card__title">
+                        <span class="en">Languages</span><span class="es">Idiomas</span>
+                    </h2>
+                    <ul class="plain">
+                        <li>
+                            <strong><span class="en">Spanish</span><span class="es">Español</span></strong>
+                            <span class="muted"><span class="en">Native</span><span class="es">Nativo</span></span>
+                        </li>
+                        <li>
+                            <strong><span class="en">English</span><span class="es">Inglés</span></strong>
+                            <span class="muted"><span class="en">Professional working proficiency</span><span
+                                    class="es">Competencia profesional</span></span>
+                        </li>
+                    </ul>
+                </section>
 
-                    </div> <!-- /.skills -->
+                <!-- ============================ AWARDS ============================ -->
+                <section class="card" id="awards">
+                    <h2 class="card__title">
+                        <span class="en">Awards &amp; Recognition</span><span class="es">Premios y Reconocimientos</span>
+                    </h2>
 
-                    <div class="awards">
-                        <h2>Aknowledgments</h2>
+                    <ul class="awards">
+                        <li>
+                            <h3><span class="en">Speaker — IoT with Python &amp; Azure</span><span class="es">Ponente — IoT con
+                                    Python y Azure</span></h3>
+                            <p class="awards__meta">OpenDevCamp / Microsoft · Hotel Galería Plaza Reforma, 2020</p>
+                            <a class="ext" href="https://cler.com.mx/Azure-OpenDevCamp/OpenDevCamp-Marzo.html#speakers"
+                                target="_blank" rel="noopener">OpenDevCamp<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                        </li>
+                        <li>
+                            <h3>Community Engineer Hero</h3>
+                            <p class="awards__meta">Streamr · Talent Land Jalisco, <span class="en">April</span><span
+                                    class="es">Abril</span> 2019</p>
+                            <a class="ext" href="https://twitter.com/streamr/status/1130403891080773632" target="_blank"
+                                rel="noopener">Streamr<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                        </li>
+                        <li>
+                            <h3><span class="en">Mentor — MXHACKS V</span><span class="es">Mentor — MXHACKS V</span></h3>
+                            <p class="awards__meta">Major League Hacking <span class="en">Hackathon</span><span
+                                    class="es">Hackathon</span>, 2018</p>
+                            <a class="ext" href="https://mlh.io" target="_blank" rel="noopener">MLH<svg
+                                    class="icon icon--sm"><use href="#i-link" /></svg></a>
+                        </li>
+                        <li>
+                            <h3><span class="en">Bots Crash Course</span><span class="es">Curso Intensivo de Bots</span></h3>
+                            <p class="awards__meta">Wizeline Academy · Centro, 2017</p>
+                            <a class="ext"
+                                href="https://pulsosocial.com/2016/12/09/exito-finaliza-primer-curso-academia-inteligencia-artificial-wizeline/"
+                                target="_blank" rel="noopener">Wizeline<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
+                        </li>
+                        <li>
+                            <h3>Facebook Hackathon</h3>
+                            <p class="awards__meta">Aldea Digital 4G · <span class="en">Mexico City</span><span class="es">Ciudad
+                                    de México</span>, 2017</p>
+                            <a class="ext" href="https://hubtelmex.com/" target="_blank" rel="noopener">Hub Telmex<svg
+                                    class="icon icon--sm"><use href="#i-link" /></svg></a>
+                        </li>
+                    </ul>
+                </section>
 
-                        <div class="award">
-                            <h3>IoT Python with Azure - OpenDevCamp</h3>
-                            <span>Hotel Galería Plaza Reforma, 2020</span>
-                            <a href="https://cler.com.mx/Azure-OpenDevCamp/OpenDevCamp-Marzo.html#speakers" target="blank">
-                                OpenDevCamp - Microsoft Azure</a>
-                        </div>
+            </aside>
 
-                        <div class="award">
-                            <h3>Community Engineer Hero - Streamr</h3>
-                            <span>Talent Land Jalisco, Abril 2019</span>
-                            <a href="https://twitter.com/streamr/status/1130403891080773632" target="blank"> Twitter -
-                                Streamr Community</a>
-                        </div>
+        </div><!-- /.layout -->
+    </main>
 
-                        <div class="award">
-                            <h3>Mentoring - MXHACKS V</h3>
-                            <span>Major League Hacking HACKATON, 2018</span>
-                            <a href="https://mlh.io" target="blank">MLH</a>
-                        </div>
+    <footer class="footer">
+        <p>
+            <span class="en">Eric Margay · Hardware &amp; Software Engineer · Mexico City</span>
+            <span class="es">Eric Margay · Ingeniero de Hardware y Software · Ciudad de México</span>
+        </p>
+        <p class="footer__meta">
+            <span class="en">Built from scratch with HTML, CSS and vanilla JavaScript.</span>
+            <span class="es">Hecho desde cero con HTML, CSS y JavaScript puro.</span>
+            <a href="https://github.com/ericmargay/DevResumeCV" target="_blank" rel="noopener">
+                <span class="en">Source</span><span class="es">Código</span>
+                <svg class="icon icon--sm"><use href="#i-link" /></svg>
+            </a>
+        </p>
+    </footer>
 
-                        <div class="award">
-                            <h3>Bots Crash course - Wizeline Academy</h3>
-                            <span>CENTRO BUILDING, 2017</span>
-                            <a href="https://pulsosocial.com/2016/12/09/exito-finaliza-primer-curso-academia-inteligencia-artificial-wizeline/"
-                                target="blank">WIZELINE</a>
-                        </div>
+    <button type="button" class="fab" id="fab-print">
+        <svg class="icon"><use href="#i-print" /></svg>
+        <span class="sr-only en">Print or save as PDF</span>
+        <span class="sr-only es">Imprimir o guardar como PDF</span>
+    </button>
 
-                        <div class="award">
-                            <h3>Facebook Hackaton - Aldea DIgital 4G</h3>
-                            <span>Mexico CITY, 2017</span>
-                            <a href="https://hubtelmex.com/" target="blank">https://hubtelmex.com</a>
-                        </div>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Eric Margay",
+      "jobTitle": "Hardware & Software Engineer",
+      "email": "mailto:ericmargay@gmail.com",
+      "telephone": "+52-55-3114-7288",
+      "address": { "@type": "PostalAddress", "addressLocality": "Mexico City", "addressCountry": "MX" },
+      "worksFor": { "@type": "Organization", "name": "Ford Motor Company" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidad Nacional Autónoma de México (CFATA)" },
+      "knowsAbout": ["Python", "Django", "JavaScript", "C++", "MicroPython", "ESP32", "Raspberry Pi", "Ultra-Wideband", "Internet of Things", "Embedded Systems"],
+      "sameAs": [
+        "https://www.linkedin.com/in/ericmargay",
+        "https://github.com/ericmargay",
+        "https://codepen.io/ericmargay"
+      ]
+    }
+    </script>
 
-                    </div> <!-- /.awards -->
+    <script src="script.js" defer></script>
+</body>
 
-                    <div class="social">
-                        <h2>Social</h2>
-                        <div class="social__group">
-                            <i class="fa fa-linkedin"></i>
-                            <a href="https://www.linkedin.com/in/ericmargay" target="_blank">ericmargay</a>
-                        </div> <!-- /.social__group -->
-                        <div class="social__group">
-                            <i class="fa fa-github"></i>
-                            <a href="https://github.com/ericmargay/" target="_blank">EricMargay</a>
-                        </div> <!-- /.social__group -->
-                        <div class="social__group">
-                            <i class="fa fa-codepen"></i>
-                            <a href="https://codepen.io/ericmargay/" target="_blank">ericmargay</a>
-                        </div> <!-- /.social__group -->
-                    </div> <!-- /.social -->
-                    <a href="ResumeCV.pdf" target="_blank" class="print-link">
-                        <i class="fa fa-print" style="font-size: 70px;"></i> Download PDF
-                    </a>
-
-                    <!-- <div cla
-                    <!-- <div class="resume-note">
-                    <span>
-                        // This resume was built <br />
-                        // with HTML and CSS (SASS).
-                    </span>
-                </div>  /.resume-note -->
-
-                    <!--<div class="portfolio social">
-                    <h2>Portfolio</h2>
-                    <div class="social__group">
-                        <i class="fa fa-codepen"></i>
-                        <a href="https://cdpn.io/MqxGbw" target="_blank">https://cdpn.io/MqxGbw</a>
-                    </div> <!-- /.social__group
-                    <a class="btn" href="https://codepen.io/awinnett/full/MqxGbw/" target="_blank">Portfolio</a>
-                </div>  /.portfolio -->
-
-                </div> <!-- /.resume-body__right -->
-
-            </div> <!-- /.resume-body -->
-
-        </div> <!-- /.full-resume -->
-
-        <!-- <div class="resume-print"><i class="fa fa-print"></i></div> -->
-        <script src="https://kit.fontawesome.com/969803ca2f.js" crossorigin="anonymous"></script>
-
-    </body>
 </html>
