@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Eric Margay — Hardware &amp; Software Engineer</title>
+    <title>Eric Margay — Machine Learning &amp; Python Data Engineer</title>
     <meta name="description"
-        content="Eric Margay — Hardware and software engineer in Mexico City. Python, Django, JavaScript, C++, ESP32, Raspberry Pi and UWB. Currently at Ford Motor Company's Global Technology &amp; Business Center.">
+        content="Eric Margay — Machine Learning and Python Data Engineer in Mexico City. Production data pipelines, CAE analytics, Airflow, Docker, ESP32 and embedded systems. Currently at Ford Motor Company's Global Technology &amp; Business Center.">
     <meta name="author" content="Eric Margay">
 
     <meta property="og:type" content="profile">
-    <meta property="og:title" content="Eric Margay — Hardware &amp; Software Engineer">
+    <meta property="og:title" content="Eric Margay — Machine Learning &amp; Python Data Engineer">
     <meta property="og:description"
-        content="Hardware and software engineer building systems where code meets physical devices. Python, Django, ESP32, Raspberry Pi, UWB.">
-    <meta property="og:url" content="https://ericmargay.github.io/DevResumeCV/">
+        content="Building production data systems end to end — ingestion, feature computation, validation and delivery — and the embedded hardware that feeds them.">
+    <meta property="og:url" content="https://ericmargay.github.io/Digitalis_CV/">
     <meta name="twitter:card" content="summary">
 
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
@@ -35,6 +35,9 @@
     <script>
         (function () {
             var d = document.documentElement;
+            // Marks that JS is available, so the reveal animations may take
+            // their hidden starting state before the first paint.
+            d.className += (d.className ? ' ' : '') + 'js';
             try {
                 var t = localStorage.getItem('cv-theme');
                 if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
@@ -100,14 +103,14 @@
     <header class="topbar">
         <div class="topbar__inner">
             <a class="topbar__brand" href="#top">
-                Eric Margay
-                <span class="topbar__brand-role en">Hardware &amp; Software Engineer</span>
-                <span class="topbar__brand-role es">Ingeniero de Hardware y Software</span>
+                <span class="topbar__brand-name">Digitalis Curriculum Vitae</span>
+                <span class="topbar__brand-role">Eric Margay</span>
             </a>
 
             <nav class="topbar__nav" id="section-nav" aria-label="Sections">
                 <a href="#experience"><span class="en">Experience</span><span class="es">Experiencia</span></a>
                 <a href="#education"><span class="en">Education</span><span class="es">Educación</span></a>
+                <a href="#research"><span class="en">Research</span><span class="es">Investigación</span></a>
                 <a href="#teaching"><span class="en">Teaching</span><span class="es">Docencia</span></a>
                 <a href="#creative"><span class="en">Creative</span><span class="es">Creativo</span></a>
                 <a href="#skills"><span class="en">Skills</span><span class="es">Skills</span></a>
@@ -146,21 +149,24 @@
             <h1 class="hero__name">Eric Margay</h1>
 
             <p class="hero__role">
-                <span class="en">Hardware &amp; Software Engineer</span>
-                <span class="es">Ingeniero de Hardware y Software</span>
+                <span class="en">Machine Learning &amp; Python Data Engineer</span>
+                <span class="es">Ingeniero de Machine Learning y Datos con Python</span>
             </p>
 
             <p class="hero__summary en">
-                Engineer with 7+ years building systems where code meets physical devices — from Python automation and
-                Django services to firmware on ESP32, Raspberry Pi and Ultra-Wideband radio. Currently automating CAE
-                PowerTrain simulation reporting at Ford's Global Technology &amp; Business Center, and a long-standing
-                workshop instructor in Python, IoT and web development.
+                Engineer with 7+ years building production data systems end to end — ingestion, feature computation,
+                validation and delivery — and the embedded hardware that feeds them. At Ford's Global Technology &amp;
+                Business Center I turn raw CAE PowerTrain simulation output into ML-ready datasets and the analytics
+                tools engineers use daily. Equal parts data engineer and ESP32 hacker — UNAM-licensed, published in
+                peer-reviewed research, and the instructor behind 8 technical workshops across Latin America.
             </p>
             <p class="hero__summary es">
-                Ingeniero con más de 7 años construyendo sistemas donde el código se encuentra con el dispositivo físico
-                — desde automatización en Python y servicios Django hasta firmware en ESP32, Raspberry Pi y radio
-                Ultra-Wideband. Actualmente automatizo los reportes de simulación CAE PowerTrain en el Global Technology
-                &amp; Business Center de Ford, y desde hace años imparto talleres de Python, IoT y desarrollo web.
+                Ingeniero con más de 7 años construyendo sistemas de datos en producción de punta a punta — ingesta,
+                cómputo de features, validación y entrega — y el hardware embebido que los alimenta. En el Global
+                Technology &amp; Business Center de Ford convierto la salida cruda de simulación CAE PowerTrain en
+                datasets listos para ML y en las herramientas de analítica que los ingenieros usan a diario. Mitad
+                ingeniero de datos, mitad hacker de ESP32 — titulado por la UNAM con cédula profesional, publicado en
+                investigación arbitrada, y con 8 talleres técnicos impartidos en Latinoamérica.
             </p>
 
             <ul class="contact">
@@ -228,77 +234,96 @@
                                 </p>
                             </div>
                             <p class="entry__role">
-                                <span class="en">Software Engineer, IPTSE CAE · Mexico City</span>
-                                <span class="es">Ingeniero de Software, IPTSE CAE · Ciudad de México</span>
+                                <span class="en">Machine Learning Software Engineer, IPTSE CAE · Mexico City</span>
+                                <span class="es">Ingeniero de Software de Machine Learning, IPTSE CAE · Ciudad de México</span>
                             </p>
 
                             <ul class="bullets">
-                                <li class="en">Build and maintain the Python automation that generates CAE PowerTrain virtual
-                                    testing reports, replacing manual report assembly for the simulation teams.</li>
-                                <li class="es">Desarrollo y mantengo la automatización en Python que genera los reportes de
-                                    pruebas virtuales CAE PowerTrain, sustituyendo el armado manual de reportes de los equipos
-                                    de simulación.</li>
+                                <li class="en">Own end-to-end production data systems — ingestion, feature computation,
+                                    validation and delivery — that turn raw CAE PowerTrain simulation output into ML-ready
+                                    datasets and the analytics tools engineers use daily.</li>
+                                <li class="es">Soy responsable de sistemas de datos en producción de punta a punta — ingesta,
+                                    cómputo de features, validación y entrega — que convierten la salida cruda de simulación CAE
+                                    PowerTrain en datasets listos para ML y en las herramientas de analítica que los ingenieros
+                                    usan a diario.</li>
 
-                                <li class="en">Develop Microsoft Power Apps workflows wired to Planner and SharePoint
-                                    connectors to automate internal engineering processes.</li>
-                                <li class="es">Desarrollo flujos en Microsoft Power Apps conectados a Planner y SharePoint para
-                                    automatizar procesos internos de ingeniería.</li>
+                                <li class="en">Build and maintain the Python pipelines that automate CAE analytics and
+                                    reporting, cutting report turnaround from roughly 4 hours of manual assembly to under 10
+                                    minutes across 5 simulation teams.</li>
+                                <li class="es">Desarrollo y mantengo los pipelines de Python que automatizan la analítica y los
+                                    reportes de CAE, reduciendo el tiempo de entrega de alrededor de 4 horas de armado manual a
+                                    menos de 10 minutos para 5 equipos de simulación.</li>
 
-                                <li class="en">Design integrations between hardware product systems and internal engineering
-                                    applications, unifying data across previously disconnected teams.</li>
-                                <li class="es">Diseño integraciones entre sistemas de producto de hardware y aplicaciones
-                                    internas de ingeniería, unificando datos entre equipos antes desconectados.</li>
+                                <li class="en">Implement feature computation and metrics layers that expose simulation insights
+                                    through interactive 2D/3D visual outputs, applying geometry, spatial reasoning and
+                                    aggregation strategies drawn from CAE tooling.</li>
+                                <li class="es">Implemento capas de cómputo de features y métricas que exponen hallazgos de
+                                    simulación mediante salidas visuales interactivas 2D/3D, aplicando geometría, razonamiento
+                                    espacial y estrategias de agregación tomadas del herramental CAE.</li>
 
-                                <li class="en">Deliver custom Python and JavaScript tooling scoped directly with internal
-                                    customers, from requirements through production release.</li>
-                                <li class="es">Entrego herramientas a la medida en Python y JavaScript definidas directamente
-                                    con los usuarios internos, desde requerimientos hasta liberación a producción.</li>
+                                <li class="en">Harden pipeline reliability with structured logging, reproducible runs and
+                                    explicit error handling, validating outputs against trusted reference datasets before every
+                                    release.</li>
+                                <li class="es">Refuerzo la confiabilidad de los pipelines con logging estructurado, corridas
+                                    reproducibles y manejo explícito de errores, validando las salidas contra datasets de
+                                    referencia confiables antes de cada liberación.</li>
 
-                                <li class="en">Enforce PEP-8, clean-code and SOLID standards across the codebase through peer
-                                    reviews and refactoring proposals.</li>
-                                <li class="es">Aplico estándares PEP-8, clean code y SOLID en el código mediante revisiones
-                                    entre pares y propuestas de refactorización.</li>
+                                <li class="en">Develop Power Apps and Python/JavaScript integrations wired to Planner and
+                                    SharePoint, connecting data sources, internal tools and visualization outputs into a single
+                                    workflow.</li>
+                                <li class="es">Desarrollo integraciones en Power Apps y Python/JavaScript conectadas a Planner y
+                                    SharePoint, uniendo fuentes de datos, herramientas internas y salidas de visualización en un
+                                    solo flujo.</li>
 
-                                <li class="en">Document architecture and results in Jupyter Notebooks and Figma prototypes, and
-                                    report weekly progress, blockers and findings to the team lead.</li>
-                                <li class="es">Documento arquitectura y resultados en Jupyter Notebooks y prototipos de Figma, y
-                                    reporto semanalmente avances, bloqueos y hallazgos al líder de equipo.</li>
+                                <li class="en">Enforce PEP-8, clean-code and SOLID standards through peer review and
+                                    refactoring, documenting systems in Jupyter notebooks and Figma flows for stakeholder
+                                    hand-off.</li>
+                                <li class="es">Aplico estándares PEP-8, clean code y SOLID mediante revisión entre pares y
+                                    refactorización, documentando los sistemas en notebooks de Jupyter y flujos de Figma para su
+                                    transferencia a los interesados.</li>
                             </ul>
 
                             <details class="more">
                                 <summary><span class="en">More detail</span><span class="es">Más detalle</span></summary>
                                 <ul class="bullets">
-                                    <li class="en">Participate in every phase of the SDLC under an agile workflow, tracking
-                                        issues and milestones on GitHub roadmaps.</li>
-                                    <li class="es">Participo en todas las fases del SDLC con metodología ágil, dando seguimiento
-                                        a issues y milestones en roadmaps de GitHub.</li>
+                                    <li class="en">Deliver container-friendly services and modules with a system-ownership
+                                        mindset rather than isolated scripts or one-off models.</li>
+                                    <li class="es">Entrego servicios y módulos listos para contenedores con mentalidad de
+                                        propiedad del sistema, en lugar de scripts aislados o modelos de una sola vez.</li>
+
+                                    <li class="en">Maintain and evolve existing production tooling, refactoring for clarity,
+                                        extensibility and performance.</li>
+                                    <li class="es">Mantengo y evoluciono el herramental de producción existente, refactorizando
+                                        para mejorar claridad, extensibilidad y rendimiento.</li>
+
+                                    <li class="en">Plan and coordinate releases on GitHub roadmaps under an agile workflow,
+                                        reporting progress, blockers and findings weekly.</li>
+                                    <li class="es">Planeo y coordino liberaciones en roadmaps de GitHub con metodología ágil,
+                                        reportando avances, bloqueos y hallazgos cada semana.</li>
+
+                                    <li class="en">Contribute to the UX/UI design flow in Figma for internal tools, improving
+                                        usability and adoption.</li>
+                                    <li class="es">Contribuyo al flujo de diseño UX/UI en Figma para herramientas internas,
+                                        mejorando su usabilidad y adopción.</li>
 
                                     <li class="en">Prototype a control sub-module for smart signaling lighting applied to
                                         automotive use cases.</li>
                                     <li class="es">Prototipo un submódulo de control para señalización lumínica inteligente
                                         aplicada a casos de uso automotrices.</li>
-
-                                    <li class="en">Test applications before production release and troubleshoot user-reported
-                                        issues.</li>
-                                    <li class="es">Pruebo aplicaciones antes de su liberación a producción y resuelvo incidencias
-                                        reportadas por los usuarios.</li>
-
-                                    <li class="en">Produce technical documentation, requirement records and specifications on
-                                        request.</li>
-                                    <li class="es">Genero documentación técnica, registros de requerimientos y especificaciones
-                                        cuando se solicitan.</li>
                                 </ul>
                             </details>
 
                             <ul class="tags">
                                 <li>Python</li>
-                                <li>JavaScript</li>
+                                <li>pandas</li>
+                                <li>NumPy</li>
+                                <li>Airflow</li>
+                                <li>ETL / ELT</li>
+                                <li>Docker</li>
                                 <li>Power Apps</li>
-                                <li>SharePoint</li>
                                 <li>Jupyter</li>
                                 <li>Git</li>
                                 <li>Figma</li>
-                                <li>Agile</li>
                             </ul>
                         </li>
 
@@ -322,9 +347,9 @@
                             </p>
 
                             <ul class="bullets">
-                                <li class="en">Extended and integrated the company API across the full product suite, unifying
+                                <li class="en">Extended and integrated the company API across all 4 product lines, unifying the
                                     hardware devices with the web applications that controlled them.</li>
-                                <li class="es">Extendí e integré la API de la empresa con toda la suite de productos, unificando
+                                <li class="es">Extendí e integré la API de la empresa con las 4 líneas de producto, unificando
                                     los dispositivos de hardware con las aplicaciones web que los controlaban.</li>
 
                                 <li class="en">Built a Python object-oriented sub-module driving smart signaling lighting over
@@ -347,9 +372,9 @@
                                 <li class="es">Administré servidores remotos por SSH, ajustando el comportamiento de Apache para
                                     validar la correlación de datos de la cuenta Walmart.</li>
 
-                                <li class="en">Trained new hires on the company development process and provided direct
-                                    technical support to customers on delivered work.</li>
-                                <li class="es">Capacité a nuevos ingenieros en el proceso de desarrollo de la empresa y di
+                                <li class="en">Onboarded 6 new engineers onto the company development process and provided
+                                    direct technical support to customers on delivered work.</li>
+                                <li class="es">Incorporé a 6 nuevos ingenieros al proceso de desarrollo de la empresa y di
                                     soporte técnico directo a clientes sobre los desarrollos entregados.</li>
                             </ul>
 
@@ -405,10 +430,10 @@
                                 <li class="es">Cofundé una empresa de rastreo en tiempo real y lideré el desarrollo completo de
                                     hardware y software.</li>
 
-                                <li class="en">Engineered indoor positioning over Ultra-Wideband radio, implementing
-                                    trilateration firmware in MicroPython and C++.</li>
-                                <li class="es">Desarrollé posicionamiento en interiores con radio Ultra-Wideband, implementando
-                                    el firmware de trilateración en MicroPython y C++.</li>
+                                <li class="en">Engineered indoor positioning over Ultra-Wideband radio at sub-metre accuracy,
+                                    implementing the trilateration firmware in MicroPython and C++.</li>
+                                <li class="es">Desarrollé posicionamiento en interiores con radio Ultra-Wideband con precisión
+                                    submétrica, implementando el firmware de trilateración en MicroPython y C++.</li>
 
                                 <li class="en">Designed the electronic systems behind the tracking devices.</li>
                                 <li class="es">Diseñé los sistemas electrónicos de los dispositivos de rastreo.</li>
@@ -495,9 +520,9 @@
                                     publicaban en el marketplace de datos blockchain.</li>
 
                                 <li class="en">Authored and delivered a Python crash course on Raspberry Pi and ESP32 boards,
-                                    taking developers from raw sensor to live cloud stream.</li>
+                                    taking 40+ developers from raw sensor to live cloud stream.</li>
                                 <li class="es">Diseñé e impartí un curso intensivo de Python sobre Raspberry Pi y placas ESP32,
-                                    llevando a los desarrolladores del sensor al stream en la nube.</li>
+                                    llevando a más de 40 desarrolladores del sensor al stream en la nube.</li>
 
                                 <li class="en">Structured and streamed sensor data to the Streamr network with Python.</li>
                                 <li class="es">Estructuré y transmití datos de sensores a la red de Streamr con Python.</li>
@@ -551,6 +576,18 @@
                                 <li class="es">Formación en ciencia e ingeniería con especialidades en física de la energía,
                                     electrónica, programación y robótica.</li>
                             </ul>
+
+                            <p class="credential">
+                                <span class="credential__label en">Professional License</span>
+                                <span class="credential__label es">Cédula Profesional</span>
+                                <strong class="credential__id">15739638</strong>
+                                <span class="credential__issuer en">SEP · Dirección General de Profesiones, Mexico</span>
+                                <span class="credential__issuer es">SEP · Dirección General de Profesiones, México</span>
+                                <a class="ext" href="https://www.gob.mx/cedulaprofesional" target="_blank" rel="noopener">
+                                    <span class="en">Verify</span><span class="es">Verificar</span>
+                                    <svg class="icon icon--sm"><use href="#i-link" /></svg>
+                                </a>
+                            </p>
                         </li>
 
                         <li class="entry">
@@ -578,16 +615,95 @@
 
                         <li class="entry">
                             <div class="entry__head">
-                                <h3 class="entry__org">Codecademy</h3>
-                                <p class="entry__date">2021 — 2022</p>
+                                <h3 class="entry__org">
+                                    <a href="https://www.codecademy.com/profiles/ericMargay" target="_blank"
+                                        rel="noopener">Codecademy</a>
+                                </h3>
+                                <p class="entry__date">
+                                    <span class="en">2021 — Present</span>
+                                    <span class="es">2021 — Actualidad</span>
+                                </p>
                             </div>
                             <p class="entry__role">
-                                <span class="en">Career paths · Online</span>
-                                <span class="es">Rutas de carrera · En línea</span>
+                                <span class="en">Verified course certificates · Online</span>
+                                <span class="es">Certificados de curso verificados · En línea</span>
                             </p>
+
+                            <ul class="certs">
+                                <li><a href="https://www.codecademy.com/profiles/ericMargay/certificates/6c152bd262967f8c941c9707ed636bda"
+                                        target="_blank" rel="noopener">Learn Python 3</a></li>
+                                <li><a href="https://www.codecademy.com/profiles/ericMargay/certificates/042a4e5884e3eb6ea1f2a12be6abb851"
+                                        target="_blank" rel="noopener">Learn SQL</a></li>
+                                <li><a href="https://www.codecademy.com/profiles/ericMargay/certificates/37c55263a9f1b1f7603f7551c293ecbd"
+                                        target="_blank" rel="noopener">Learn Bash Scripting</a></li>
+                                <li><a href="https://www.codecademy.com/profiles/ericMargay/certificates/c87ba0541f8be78bc2f4ba1128233f6f"
+                                        target="_blank" rel="noopener">Learn the Command Line</a></li>
+                                <li><a href="https://www.codecademy.com/profiles/ericMargay/certificates/28ccb695c353465a8785a036ad32d3b9"
+                                        target="_blank" rel="noopener">Intro to Generative AI</a></li>
+                                <li><a href="https://www.codecademy.com/profiles/ericMargay/certificates/705dcb15de0da4dd9d9fc4f3274b430e"
+                                        target="_blank" rel="noopener">Learn JavaScript</a></li>
+                                <li><a href="https://www.codecademy.com/profiles/ericMargay/certificates/4ccef8d532484ea2aeec3b3b3dbb4f9c"
+                                        target="_blank" rel="noopener">Introduction to UI and UX Design</a></li>
+                            </ul>
+
                             <ul class="bullets">
-                                <li class="en">Python 3, Django, JavaScript, React and UI/UX design paths.</li>
-                                <li class="es">Rutas de Python 3, Django, JavaScript, React y diseño UI/UX.</li>
+                                <li class="en">Additional career-path coursework in Django and React.</li>
+                                <li class="es">Formación adicional en las rutas de Django y React.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </section>
+
+                <!-- ============================ RESEARCH ============================ -->
+                <section class="section" id="research">
+                    <h2 class="section__title">
+                        <span class="en">Research &amp; Publications</span>
+                        <span class="es">Investigación y Publicaciones</span>
+                    </h2>
+
+                    <ol class="timeline timeline--compact">
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    <a href="https://riiit.com.mx/" target="_blank" rel="noopener">RIIIT</a>
+                                    <span class="entry__org-sub en">International Journal of Technological Research and
+                                        Innovation · Universidad Autónoma de Coahuila</span>
+                                    <span class="entry__org-sub es">Revista Internacional de Investigación e Innovación
+                                        Tecnológica · Universidad Autónoma de Coahuila</span>
+                                </h3>
+                                <p class="entry__date">2022</p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Co-author · Peer-reviewed technical article</span>
+                                <span class="es">Coautor · Artículo técnico arbitrado</span>
+                            </p>
+
+                            <ul class="bullets">
+                                <li class="paper-title" lang="es">«Sistema mecatrónico empleando Raspberry Pi para el control de
+                                    la temperatura y velocidad de agitación de una reacción de biodiésel»</li>
+
+                                <li class="en">Contributed the embedded control layer: a Raspberry Pi system that regulates
+                                    reaction temperature and stirring speed during biodiesel transesterification, replacing
+                                    manual operator adjustment of the reactor.</li>
+                                <li class="es">Aporté la capa de control embebido: un sistema en Raspberry Pi que regula la
+                                    temperatura de reacción y la velocidad de agitación durante la transesterificación del
+                                    biodiésel, sustituyendo el ajuste manual del reactor por parte del operador.</li>
+
+                                <li class="en">Six-author collaboration with the mechatronics and renewable-energy research
+                                    group: García-López, M.; Dena-Aguilar, J. A.; Salas-Aguilar, C. L.; Herrera-Ambriz, V. M.;
+                                    Velasco-Gallardo, V. M.; <strong>Pérez-Margay, L. E.</strong></li>
+                                <li class="es">Colaboración de seis autores con el grupo de investigación en mecatrónica y
+                                    energías renovables: García-López, M.; Dena-Aguilar, J. A.; Salas-Aguilar, C. L.;
+                                    Herrera-Ambriz, V. M.; Velasco-Gallardo, V. M.; <strong>Pérez-Margay, L. E.</strong></li>
+                            </ul>
+
+                            <ul class="tags">
+                                <li>Raspberry Pi</li>
+                                <li>Python</li>
+                                <li>Control Systems</li>
+                                <li>Sensor Instrumentation</li>
+                                <li>Mechatronics</li>
+                                <li>Renewable Energy</li>
                             </ul>
                         </li>
                     </ol>
@@ -596,17 +712,44 @@
                 <!-- ============================ TEACHING ============================ -->
                 <section class="section" id="teaching">
                     <h2 class="section__title">
-                        <span class="en">Teaching &amp; Workshops</span>
-                        <span class="es">Docencia y Talleres</span>
+                        <span class="en">Teaching &amp; Academic Supervision</span>
+                        <span class="es">Docencia y Asesoría Académica</span>
                     </h2>
                     <p class="section__note">
-                        <span class="en">Eight years of hands-on instruction in Python, IoT and web development across
-                            bootcamps, corporate training and public tech events.</span>
-                        <span class="es">Ocho años impartiendo formación práctica en Python, IoT y desarrollo web en bootcamps,
-                            capacitación corporativa y eventos públicos de tecnología.</span>
+                        <span class="en">8 programs and 200+ participants over eight years of hands-on instruction in Python,
+                            IoT and web development across bootcamps, corporate training and public tech events.</span>
+                        <span class="es">8 programas y más de 200 participantes en ocho años impartiendo formación práctica en
+                            Python, IoT y desarrollo web en bootcamps, capacitación corporativa y eventos públicos de
+                            tecnología.</span>
                     </p>
 
                     <ol class="timeline timeline--compact">
+
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    <span class="en">Master's Thesis Advisor</span>
+                                    <span class="es">Asesor de Tesis de Maestría</span>
+                                    <span class="entry__org-sub en">Mechatronic instrumentation for biodiesel production</span>
+                                    <span class="entry__org-sub es">Instrumentación mecatrónica para producción de
+                                        biodiésel</span>
+                                </h3>
+                                <p class="entry__date">2022</p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Technical advisor — embedded control &amp; instrumentation</span>
+                                <span class="es">Asesor técnico — control embebido e instrumentación</span>
+                            </p>
+                            <ul class="bullets">
+                                <li class="en">Advised the embedded systems component of a master's thesis, designing the
+                                    Raspberry Pi control and sensing architecture for a biodiesel reactor.</li>
+                                <li class="es">Asesoré el componente de sistemas embebidos de una tesis de maestría, diseñando la
+                                    arquitectura de control y sensado en Raspberry Pi para un reactor de biodiésel.</li>
+
+                                <li class="en">The resulting work was co-authored into the RIIIT journal article listed above.</li>
+                                <li class="es">El trabajo resultante derivó en el artículo de la revista RIIIT citado arriba.</li>
+                            </ul>
+                        </li>
 
                         <li class="entry">
                             <div class="entry__head">
@@ -750,22 +893,22 @@
                                     <a href="https://www.talent-land.mx/" target="_blank" rel="noopener">Talent Land</a>
                                 </h3>
                                 <p class="entry__date">
-                                    <span class="en">Aug 2019</span><span class="es">Ago 2019</span>
+                                    <span class="en">Apr 2019</span><span class="es">Abr 2019</span>
                                 </p>
                             </div>
                             <p class="entry__role">
-                                <span class="en">Speaker — Internet of Things · Guadalajara Convention Center</span>
-                                <span class="es">Ponente — Internet de las Cosas · Centro de Convenciones Guadalajara</span>
+                                <span class="en">Speaker — Maker Lab, Iron Land · Guadalajara Convention Center</span>
+                                <span class="es">Ponente — Maker Lab, Iron Land · Centro de Convenciones Guadalajara</span>
                             </p>
                             <ul class="bullets">
-                                <li class="en">Delivered "Percibiendo la realidad con Raspberry Pi", a two-part session on
-                                    sensing the physical world with Raspberry Pi.
+                                <li class="en">Delivered "Percibiendo la realidad con Raspberry Pi", a two-part, six-hour
+                                    hands-on session on sensing the physical world with Raspberry Pi.
                                     <a class="ext"
                                         href="https://jaliscotalentland2019.sched.com/event/OMJR/percibiendo-la-realidad-con-raspberry-pi-eric-margay-1-de-2"
                                         target="_blank" rel="noopener">Schedule<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
                                 </li>
-                                <li class="es">Impartí "Percibiendo la realidad con Raspberry Pi", una sesión en dos partes sobre
-                                    sensado del mundo físico con Raspberry Pi.
+                                <li class="es">Impartí "Percibiendo la realidad con Raspberry Pi", un taller práctico de seis
+                                    horas en dos partes sobre sensado del mundo físico con Raspberry Pi.
                                     <a class="ext"
                                         href="https://jaliscotalentland2019.sched.com/event/OMJR/percibiendo-la-realidad-con-raspberry-pi-eric-margay-1-de-2"
                                         target="_blank" rel="noopener">Programa<svg class="icon icon--sm"><use href="#i-link" /></svg></a>
@@ -943,38 +1086,60 @@
                     </h2>
 
                     <div class="skill-group">
+                        <h3><span class="en">Machine Learning &amp; Data</span><span class="es">Machine Learning y Datos</span></h3>
+                        <p class="en">Python · pandas · NumPy · scikit-learn · Feature engineering · Model evaluation · Data
+                            validation · CAE analytics · Metrics pipelines</p>
+                        <p class="es">Python · pandas · NumPy · scikit-learn · Ingeniería de features · Evaluación de modelos ·
+                            Validación de datos · Analítica CAE · Pipelines de métricas</p>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3><span class="en">Pipelines &amp; Orchestration</span><span class="es">Pipelines y Orquestación</span>
+                        </h3>
+                        <p class="en">Apache Airflow (DAGs) · ETL / ELT design · Batch processing · Scheduling · Reproducible
+                            runs · Structured logging &amp; monitoring</p>
+                        <p class="es">Apache Airflow (DAGs) · Diseño ETL / ELT · Procesamiento por lotes · Scheduling · Corridas
+                            reproducibles · Logging estructurado y monitoreo</p>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3><span class="en">Cloud, Containers &amp; Storage</span><span class="es">Nube, Contenedores y
+                                Almacenamiento</span></h3>
+                        <p class="en">Docker · Containerized services · Kubernetes fundamentals · CI/CD · Azure · PostgreSQL ·
+                            SQL · Parquet / CSV pipelines</p>
+                        <p class="es">Docker · Servicios en contenedores · Fundamentos de Kubernetes · CI/CD · Azure ·
+                            PostgreSQL · SQL · Pipelines Parquet / CSV</p>
+                    </div>
+
+                    <div class="skill-group">
                         <h3><span class="en">Languages</span><span class="es">Lenguajes</span></h3>
                         <p>Python · JavaScript · C++ · MicroPython · SQL · HTML · CSS</p>
                     </div>
 
                     <div class="skill-group">
-                        <h3><span class="en">Frameworks &amp; Libraries</span><span class="es">Frameworks y Librerías</span></h3>
-                        <p>Django · Node.js · Express · React · Three.js · jQuery · Flexbox</p>
+                        <h3><span class="en">Frameworks &amp; Web</span><span class="es">Frameworks y Web</span></h3>
+                        <p>Django · Node.js · Express · React · Three.js · jQuery · REST APIs</p>
                     </div>
 
                     <div class="skill-group">
                         <h3><span class="en">Hardware &amp; Embedded</span><span class="es">Hardware y Embebidos</span></h3>
-                        <p>Raspberry Pi · ESP32 (Espressif) · Atmel / ATTINY · Ultra-Wideband RF · BLE sensors · Serial &amp;
-                            WebSocket protocols · Arduino IDE</p>
+                        <p class="en">Raspberry Pi · ESP32 (Espressif) · Atmel / ATTINY · Ultra-Wideband RF · BLE sensors ·
+                            Serial &amp; WebSocket protocols · Arduino IDE</p>
+                        <p class="es">Raspberry Pi · ESP32 (Espressif) · Atmel / ATTINY · Radio Ultra-Wideband · Sensores BLE ·
+                            Protocolos serial y WebSocket · Arduino IDE</p>
                     </div>
 
                     <div class="skill-group">
-                        <h3><span class="en">Tools &amp; Platforms</span><span class="es">Herramientas y Plataformas</span></h3>
-                        <p>Git &amp; GitHub · VS Code · Jupyter · Conda · npm · Webpack · Jira · Microsoft Power Apps ·
-                            SharePoint · Azure · Apache · SSH · CLI / Shell</p>
+                        <h3><span class="en">Design &amp; Electronics</span><span class="es">Diseño y Electrónica</span></h3>
+                        <p>Figma · Adobe Illustrator · Adobe Photoshop · Spline · Blender · Unity · KiCad · Eagle · EasyEDA</p>
                     </div>
 
                     <div class="skill-group">
-                        <h3><span class="en">Electronics &amp; Design</span><span class="es">Electrónica y Diseño</span></h3>
-                        <p>KiCad · Eagle · EasyEDA · Figma · Adobe Illustrator · Adobe Photoshop · Spline · Blender · Unity</p>
-                    </div>
-
-                    <div class="skill-group">
-                        <h3><span class="en">Practices</span><span class="es">Prácticas</span></h3>
-                        <p class="en">Agile · Full SDLC · Clean Code &amp; SOLID · PEP-8 · Code review · Technical documentation ·
-                            UI/UX prototyping</p>
-                        <p class="es">Ágil · SDLC completo · Clean Code y SOLID · PEP-8 · Revisión de código · Documentación
-                            técnica · Prototipado UI/UX</p>
+                        <h3><span class="en">Tools &amp; Practices</span><span class="es">Herramientas y Prácticas</span></h3>
+                        <p class="en">Git &amp; GitHub · VS Code · Jupyter · Conda · npm · Webpack · Jira · SharePoint · SSH ·
+                            CLI / Shell · Agile · Clean Code &amp; SOLID · PEP-8</p>
+                        <p class="es">Git &amp; GitHub · VS Code · Jupyter · Conda · npm · Webpack · Jira · SharePoint · SSH ·
+                            CLI / Shell · Ágil · Clean Code y SOLID · PEP-8</p>
                     </div>
                 </section>
 
@@ -1048,13 +1213,13 @@
 
     <footer class="footer">
         <p>
-            <span class="en">Eric Margay · Hardware &amp; Software Engineer · Mexico City</span>
-            <span class="es">Eric Margay · Ingeniero de Hardware y Software · Ciudad de México</span>
+            <span class="en">Eric Margay · Machine Learning &amp; Python Data Engineer · Mexico City</span>
+            <span class="es">Eric Margay · Ingeniero de Machine Learning y Datos · Ciudad de México</span>
         </p>
         <p class="footer__meta">
             <span class="en">Built from scratch with HTML, CSS and vanilla JavaScript.</span>
             <span class="es">Hecho desde cero con HTML, CSS y JavaScript puro.</span>
-            <a href="https://github.com/ericmargay/DevResumeCV" target="_blank" rel="noopener">
+            <a href="https://github.com/ericmargay/Digitalis_CV" target="_blank" rel="noopener">
                 <span class="en">Source</span><span class="es">Código</span>
                 <svg class="icon icon--sm"><use href="#i-link" /></svg>
             </a>
@@ -1072,13 +1237,13 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Eric Margay",
-      "jobTitle": "Hardware & Software Engineer",
+      "jobTitle": "Machine Learning & Python Data Engineer",
       "email": "mailto:ericmargay@gmail.com",
       "telephone": "+52-55-3114-7288",
       "address": { "@type": "PostalAddress", "addressLocality": "Mexico City", "addressCountry": "MX" },
       "worksFor": { "@type": "Organization", "name": "Ford Motor Company" },
       "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidad Nacional Autónoma de México (CFATA)" },
-      "knowsAbout": ["Python", "Django", "JavaScript", "C++", "MicroPython", "ESP32", "Raspberry Pi", "Ultra-Wideband", "Internet of Things", "Embedded Systems"],
+      "knowsAbout": ["Python", "Machine Learning", "Data Engineering", "Apache Airflow", "ETL", "pandas", "NumPy", "scikit-learn", "Docker", "Kubernetes", "Django", "JavaScript", "C++", "MicroPython", "ESP32", "Raspberry Pi", "Ultra-Wideband", "Internet of Things", "Embedded Systems"],
       "sameAs": [
         "https://www.linkedin.com/in/ericmargay",
         "https://github.com/ericmargay",

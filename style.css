@@ -35,6 +35,8 @@
 
     --content-width: 1180px;
     --topbar-height: 60px;
+    /* Single responsive gutter drives every horizontal margin on the page. */
+    --gutter: clamp(18px, 4vw, 32px);
 
     color-scheme: light;
 }
@@ -280,7 +282,7 @@ em {
     max-width: var(--content-width);
     min-height: var(--topbar-height);
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 var(--gutter);
 }
 
 .topbar__brand {
@@ -288,11 +290,7 @@ em {
     flex-direction: column;
     flex: none;
     color: var(--text);
-    font-family: var(--font-serif);
-    font-size: 1.02rem;
-    font-weight: 600;
     line-height: 1.2;
-    letter-spacing: -0.01em;
 }
 
 .topbar__brand:hover {
@@ -300,12 +298,23 @@ em {
     text-decoration: none;
 }
 
+.topbar__brand-name {
+    font-family: var(--font-serif);
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.topbar__brand:hover .topbar__brand-name {
+    color: var(--accent);
+}
+
 .topbar__brand-role {
     font-family: var(--font-sans);
     font-size: 0.68rem;
     font-weight: 400;
     color: var(--text-faint);
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
 }
 
 .topbar__nav {
@@ -517,7 +526,7 @@ em {
 main {
     max-width: var(--content-width);
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 var(--gutter);
 }
 
 .hero {
@@ -551,11 +560,25 @@ main {
 }
 
 .hero__summary {
-    max-width: 68ch;
+    max-width: 70ch;
     margin-top: 20px;
     color: var(--text-muted);
     font-size: 1rem;
     line-height: 1.72;
+}
+
+/* Justification only where the measure is wide enough to avoid rivers of
+   whitespace; narrow columns stay ragged-right. Hyphenation is language-aware
+   because the <html lang> attribute follows the EN/ES toggle. */
+@media (min-width: 700px) {
+
+    .hero__summary,
+    .bullets li {
+        text-align: justify;
+        text-justify: inter-word;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+    }
 }
 
 .contact {
@@ -619,14 +642,23 @@ main {
         gap: 56px;
     }
 
-    /* The sidebar rides along while the long experience column scrolls. */
+    /* The sidebar rides along while the long experience column scrolls.
+       Its scrollbar is hidden — the content still scrolls, it just does not
+       draw a track next to the cards. */
     .layout__aside {
         position: sticky;
         top: calc(var(--topbar-height) + 24px);
         align-self: start;
         max-height: calc(100vh - var(--topbar-height) - 48px);
         overflow-y: auto;
-        scrollbar-width: thin;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .layout__aside::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        display: none;
     }
 }
 
@@ -778,6 +810,78 @@ main {
     font-size: 0.85em;
     font-weight: 550;
     white-space: nowrap;
+}
+
+/* Verifiable credential badge (professional licence registry number). */
+.credential {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 3px 8px;
+    margin-top: 12px;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm);
+    background: var(--bg-subtle);
+    font-size: 0.83rem;
+}
+
+.credential__label {
+    color: var(--text-faint);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.72rem;
+}
+
+.credential__id {
+    color: var(--text);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+}
+
+.credential__issuer {
+    color: var(--text-faint);
+}
+
+/* Verified certificates: pill list where each item links to its credential. */
+.certs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 12px;
+}
+
+.certs li {
+    display: flex;
+}
+
+.certs a {
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: var(--bg-subtle);
+    color: var(--text-muted);
+    font-size: 0.775rem;
+    font-weight: 550;
+    transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+}
+
+.certs a:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* Cited work keeps its original Spanish title, set apart from the summary. */
+.paper-title {
+    color: var(--text) !important;
+    font-weight: 600;
+    font-style: italic;
+    text-align: left !important;
 }
 
 /* Collapsible overflow detail, so the default view stays Harvard-length. */
@@ -941,7 +1045,7 @@ main {
 .footer {
     max-width: var(--content-width);
     margin: 0 auto;
-    padding: 26px 24px 40px;
+    padding: 26px var(--gutter) 40px;
     border-top: 1px solid var(--border);
     color: var(--text-faint);
     font-size: 0.83rem;
@@ -956,7 +1060,92 @@ main {
 }
 
 /* --------------------------------------------------------------------------
-   11. Responsive
+   11. Scroll reveal
+   The hidden state is scoped to .js, which the inline <head> script sets
+   before first paint. Without JavaScript nothing is ever hidden.
+   -------------------------------------------------------------------------- */
+
+.js .section__title,
+.js .section__note,
+.js .entry,
+.js .card {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+        transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    /* Promote only while animating; cleared once revealed. */
+    will-change: opacity, transform;
+}
+
+.js .section__title.is-revealed,
+.js .section__note.is-revealed,
+.js .entry.is-revealed,
+.js .card.is-revealed {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+}
+
+/* Bullets cascade in after their entry lands. nth-child counts both language
+   copies, so the visible half lands on an even 80ms rhythm. */
+.js .entry .bullets > li,
+.js .entry .tags > li {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.js .entry.is-revealed .bullets > li,
+.js .entry.is-revealed .tags > li {
+    opacity: 1;
+    transform: none;
+}
+
+.js .entry.is-revealed .bullets > li:nth-child(1) { transition-delay: 0.08s; }
+.js .entry.is-revealed .bullets > li:nth-child(2) { transition-delay: 0.12s; }
+.js .entry.is-revealed .bullets > li:nth-child(3) { transition-delay: 0.16s; }
+.js .entry.is-revealed .bullets > li:nth-child(4) { transition-delay: 0.20s; }
+.js .entry.is-revealed .bullets > li:nth-child(5) { transition-delay: 0.24s; }
+.js .entry.is-revealed .bullets > li:nth-child(6) { transition-delay: 0.28s; }
+.js .entry.is-revealed .bullets > li:nth-child(7) { transition-delay: 0.32s; }
+.js .entry.is-revealed .bullets > li:nth-child(8) { transition-delay: 0.36s; }
+.js .entry.is-revealed .bullets > li:nth-child(9) { transition-delay: 0.40s; }
+.js .entry.is-revealed .bullets > li:nth-child(10) { transition-delay: 0.44s; }
+.js .entry.is-revealed .bullets > li:nth-child(n+11) { transition-delay: 0.48s; }
+.js .entry.is-revealed .tags > li { transition-delay: 0.5s; }
+
+/* The timeline node pops once its entry arrives. */
+.js .entry::before {
+    transform: scale(0.4);
+    opacity: 0;
+    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+    transition-delay: 0.1s;
+}
+
+.js .entry.is-revealed::before {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Motion is decoration only: anyone who opts out, and every printed page,
+   gets the fully settled layout with no transitions at all. */
+@media (prefers-reduced-motion: reduce) {
+
+    .js .section__title,
+    .js .section__note,
+    .js .entry,
+    .js .card,
+    .js .entry .bullets > li,
+    .js .entry .tags > li,
+    .js .entry::before {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   12. Responsive
    -------------------------------------------------------------------------- */
 
 @media (max-width: 900px) {
@@ -972,13 +1161,6 @@ main {
 @media (max-width: 640px) {
     body {
         font-size: 14.5px;
-    }
-
-    main,
-    .topbar__inner,
-    .footer {
-        padding-left: 18px;
-        padding-right: 18px;
     }
 
     .hero {
@@ -1027,27 +1209,50 @@ main {
 }
 
 /* --------------------------------------------------------------------------
-   12. Print — single-column, Harvard-style, ATS friendly
+   13. Print — single-column, Harvard-style, ATS friendly
    -------------------------------------------------------------------------- */
-
 @media print {
+
+    /* Nothing may reach paper mid-animation: reset every reveal state first. */
+    .js .section__title,
+    .js .section__note,
+    .js .entry,
+    .js .card,
+    .js .entry .bullets > li,
+    .js .entry .tags > li,
+    .js .entry::before {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+    }
 
     @page {
         size: Letter;
-        margin: 13mm 14mm;
+        margin: 14mm 15mm;
+    }
+
+    /* Backgrounds and borders are part of the design here (tags, rules), so
+       they must survive the browser's default "economy" colour stripping. */
+    *,
+    *::before,
+    *::after {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 
     :root {
-        /* Force the light palette regardless of the on-screen theme. */
+        /* Force the light palette regardless of the on-screen theme, with a
+           deep indigo accent that stays legible in greyscale. */
         --bg: #ffffff;
-        --bg-subtle: #ffffff;
+        --bg-subtle: #f4f5f8;
         --surface: #ffffff;
-        --border: #cfd4dc;
-        --border-strong: #9aa2ae;
-        --text: #000000;
-        --text-muted: #1c1c1c;
-        --text-faint: #4a4a4a;
-        --accent: #1a1a1a;
+        --border: #c9cfd9;
+        --border-strong: #8d95a3;
+        --text: #101319;
+        --text-muted: #23272f;
+        --text-faint: #545b66;
+        --accent: #1e3a8a;
         --shadow-sm: none;
         --shadow-md: none;
         --shadow-lg: none;
@@ -1059,9 +1264,9 @@ main {
 
     body {
         background: #fff;
-        color: #000;
-        font-size: 9.6pt;
-        line-height: 1.42;
+        color: var(--text);
+        font-size: 9.7pt;
+        line-height: 1.5;
     }
 
     /* The printed sheet stays at Harvard length: the collapsible overflow
@@ -1073,8 +1278,7 @@ main {
     .hero__actions,
     .hero__eyebrow,
     .footer__meta,
-    .more,
-    .section__note {
+    .more {
         display: none !important;
     }
 
@@ -1084,34 +1288,44 @@ main {
         padding: 0;
     }
 
+    /* ---------------------------------------------------------------- Header */
+
     .hero {
-        padding: 0 0 8pt;
-        border-bottom: 1.5pt solid #000;
+        padding: 0 0 10pt;
+        border-bottom: 1.5pt solid var(--accent);
     }
 
     .hero__name {
-        font-size: 23pt;
+        font-size: 25pt;
         line-height: 1;
+        letter-spacing: -0.02em;
+        color: var(--text);
     }
 
     .hero__role {
-        margin-top: 2pt;
-        font-size: 10.5pt;
-        color: #000;
+        margin-top: 3pt;
+        font-size: 11pt;
+        font-weight: 600;
+        color: var(--accent);
     }
 
     .hero__summary {
         max-width: none;
-        margin-top: 6pt;
-        font-size: 9.3pt;
-        line-height: 1.45;
+        margin-top: 7pt;
+        font-size: 9.5pt;
+        line-height: 1.5;
+        color: var(--text-muted);
+        text-align: justify;
+        hyphens: auto;
     }
 
-    /* Contact collapses to a single dense line of plain text. */
+    /* Contact collapses to one dense, evenly separated line. */
     .contact {
-        gap: 0;
-        margin-top: 7pt;
         display: block;
+        gap: 0;
+        margin-top: 8pt;
+        font-size: 9pt;
+        color: var(--text-muted);
     }
 
     .contact li {
@@ -1119,12 +1333,12 @@ main {
         padding: 0;
         border: 0;
         background: none;
-        font-size: 9pt;
+        font-size: inherit;
     }
 
     .contact li + li::before {
         content: " · ";
-        color: #666;
+        color: var(--border-strong);
     }
 
     .contact li .icon {
@@ -1132,13 +1346,15 @@ main {
     }
 
     .contact a {
-        color: #000;
+        color: var(--text-muted);
     }
+
+    /* ---------------------------------------------------------------- Layout */
 
     /* One column: the sidebar flows below the main sections. */
     .layout {
         display: block;
-        padding: 10pt 0 0;
+        padding: 12pt 0 0;
     }
 
     .layout__aside {
@@ -1149,138 +1365,229 @@ main {
     }
 
     .section {
-        margin-bottom: 11pt;
+        margin-bottom: 13pt;
     }
 
-    .section__title {
+    .section__title,
+    .card__title {
         margin-bottom: 0;
-        padding-bottom: 2pt;
-        border-bottom: 1pt solid #000;
-        font-size: 12.5pt;
+        padding-bottom: 2.5pt;
+        border-bottom: 1pt solid var(--accent);
+        font-size: 13pt;
+        font-weight: 600;
+        color: var(--text);
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+
+    .section__note {
+        display: block;
+        margin: 5pt 0 0;
+        font-size: 8.8pt;
+        font-style: italic;
+        color: var(--text-faint);
         break-after: avoid;
     }
 
+    /* ---------------------------------------------------------------- Entries */
+
     .timeline {
-        margin-top: 8pt;
+        margin-top: 9pt;
         padding-left: 0;
         border-left: 0;
     }
 
     .entry {
-        padding-bottom: 7.5pt;
+        padding-bottom: 9pt;
         break-inside: avoid;
+        page-break-inside: avoid;
     }
 
     .entry::before {
         display: none;
     }
 
-    .entry__org {
-        font-size: 10.2pt;
+    .entry__head {
+        gap: 0 12pt;
     }
 
-    .entry__org a,
+    .entry__org {
+        font-size: 10.4pt;
+        font-weight: 700;
+        color: var(--text);
+        break-after: avoid;
+    }
+
+    .entry__org a {
+        color: var(--text);
+    }
+
     .entry__org-sub,
     .entry__org-sub a {
-        color: #000;
+        font-size: 9pt;
+        font-weight: 400;
+        color: var(--text-faint);
     }
 
     .entry__date {
-        font-size: 8.6pt;
-        color: #000;
+        font-size: 8.5pt;
+        font-weight: 600;
+        color: var(--accent);
     }
 
     .entry__role {
-        font-size: 9.3pt;
+        margin-top: 1pt;
+        font-size: 9.4pt;
         font-style: italic;
-        color: #000;
+        font-weight: 500;
+        color: var(--text-muted);
+        break-after: avoid;
     }
 
     .bullets {
-        margin-top: 4pt;
+        margin-top: 5pt;
     }
 
     .bullets li {
-        margin-bottom: 2pt;
+        margin-bottom: 2.5pt;
         padding-left: 11pt;
-        font-size: 9.4pt;
-        line-height: 1.4;
+        font-size: 9.5pt;
+        line-height: 1.46;
+        color: var(--text-muted);
+        text-align: justify;
+        hyphens: auto;
         break-inside: avoid;
+        orphans: 2;
+        widows: 2;
     }
 
     .bullets li::before {
-        top: 0.55em;
-        left: 2pt;
-        width: 2.6pt;
-        height: 2.6pt;
-        background: #000;
+        top: 0.58em;
+        left: 1.5pt;
+        width: 2.8pt;
+        height: 2.8pt;
+        background: var(--accent);
     }
 
+    /* Inline reference links are noise on paper — the URLs are unusable in
+       print and the destinations are all listed on the live page. */
     .ext,
     .ext .icon {
         display: none;
     }
 
-    .tags {
-        gap: 0;
+    /* The licence number is the one credential a recruiter can verify against a
+       public registry, so it keeps its badge treatment on paper. */
+    .credential {
+        gap: 2pt 6pt;
+        margin-top: 5pt;
+        padding: 3pt 6pt;
+        border: 0.5pt solid var(--border);
+        border-left: 2pt solid var(--accent);
+        border-radius: 2pt;
+        background: var(--bg-subtle);
+        font-size: 8.6pt;
+        break-inside: avoid;
+    }
+
+    .credential__label {
+        font-size: 7.4pt;
+        color: var(--accent);
+    }
+
+    .credential__id {
+        color: var(--text);
+    }
+
+    .credential__issuer {
+        color: var(--text-faint);
+    }
+
+    .paper-title {
+        font-size: 9.6pt;
+        text-align: left !important;
+        hyphens: none;
+    }
+
+    /* Certificate pills survive to paper, minus their (unusable) hyperlinks. */
+    .certs {
+        gap: 2.5pt;
         margin-top: 4pt;
-        display: block;
+    }
+
+    .certs a {
+        padding: 1pt 4.5pt;
+        border: 0.5pt solid var(--border);
+        border-radius: 2.5pt;
+        background: var(--bg-subtle);
+        color: var(--text-muted);
+        font-size: 7.8pt;
+        font-weight: 600;
+    }
+
+    /* Tags stay real pills on paper rather than collapsing to a text run. */
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2.5pt;
+        margin-top: 5pt;
     }
 
     .tags li {
-        display: inline;
-        padding: 0;
-        border: 0;
-        background: none;
-        color: #333;
-        font-size: 8.6pt;
+        display: inline-block;
+        padding: 1pt 4.5pt;
+        border: 0.5pt solid var(--border);
+        border-radius: 2.5pt;
+        background: var(--bg-subtle);
+        color: var(--text-faint);
+        font-size: 7.6pt;
+        font-weight: 600;
+        line-height: 1.5;
     }
 
-    .tags li + li::before {
-        content: " · ";
-    }
-
-    /* Workshops and creative work are one-liners on paper — tighten them. */
     .timeline--compact .entry {
-        padding-bottom: 6pt;
+        padding-bottom: 7pt;
     }
+
+    /* ---------------------------------------------------------------- Sidebar */
 
     /* Cards may flow across a page boundary; the atomic units are the
        individual skill groups and award items, which never split. */
     .card {
         padding: 0;
-        margin-bottom: 11pt;
+        margin-bottom: 12pt;
         border: 0;
         border-radius: 0;
+        background: none;
+        box-shadow: none;
     }
 
     .card__title {
-        margin-bottom: 4pt;
-        padding-bottom: 2pt;
-        border-bottom: 1pt solid #000;
-        font-size: 12.5pt;
+        margin-bottom: 5pt;
     }
 
     /* On paper each skill group is a label/value row rather than two stacked
        lines — same content, roughly half the vertical space. */
     #skills .skill-group {
         display: grid;
-        grid-template-columns: 86pt 1fr;
-        gap: 0 8pt;
-        margin-bottom: 2.5pt;
+        grid-template-columns: 96pt 1fr;
+        gap: 0 9pt;
+        margin-bottom: 3pt;
         break-inside: avoid;
     }
 
     #skills .skill-group h3 {
         margin: 0;
-        padding-top: 0.5pt;
-        font-size: 8pt;
-        color: #000;
+        padding-top: 0.8pt;
+        font-size: 7.8pt;
+        font-weight: 700;
+        color: var(--accent);
     }
 
     #skills .skill-group p {
         font-size: 9pt;
-        line-height: 1.35;
+        line-height: 1.42;
+        color: var(--text-muted);
     }
 
     #languages .plain li {
@@ -1290,35 +1597,40 @@ main {
 
     #languages .plain li + li::before {
         content: " · ";
+        color: var(--border-strong);
     }
 
     #awards ul {
         column-count: 2;
-        column-gap: 16pt;
+        column-gap: 18pt;
     }
 
     .awards li {
-        padding-bottom: 4pt;
-        margin-bottom: 4pt;
+        padding-bottom: 5pt;
+        margin-bottom: 5pt;
         border-bottom: 0;
         break-inside: avoid;
     }
 
     .awards h3 {
         font-size: 9.3pt;
+        font-weight: 650;
+        color: var(--text);
     }
 
     .awards__meta {
         margin: 0;
-        font-size: 8.6pt;
-        color: #333;
+        font-size: 8.5pt;
+        color: var(--text-faint);
     }
 
+    /* ---------------------------------------------------------------- Footer */
+
     .footer {
-        padding: 8pt 0 0;
-        border-top: 0.5pt solid #999;
+        padding: 9pt 0 0;
+        border-top: 0.5pt solid var(--border);
         font-size: 8pt;
-        color: #555;
+        color: var(--text-faint);
     }
 
     a {

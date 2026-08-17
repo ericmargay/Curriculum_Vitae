@@ -60,8 +60,8 @@
         });
 
         document.title = lang === 'es'
-            ? 'Eric Margay — Ingeniero de Hardware y Software'
-            : 'Eric Margay — Hardware & Software Engineer';
+            ? 'Eric Margay — Ingeniero de Machine Learning y Datos'
+            : 'Eric Margay — Machine Learning & Python Data Engineer';
     }
 
     Array.prototype.forEach.call(langButtons, function (btn) {
@@ -83,6 +83,62 @@
 
     // The "more detail" blocks are deliberately web-only: the print stylesheet
     // hides them so the PDF keeps its Harvard-length 4–6 bullets per role.
+
+    /* ---------------------------------------------------------------
+       Scroll reveal
+       --------------------------------------------------------------- */
+
+    var revealTargets = document.querySelectorAll(
+        '.section__title, .section__note, .entry, .card'
+    );
+
+    function revealAll() {
+        Array.prototype.forEach.call(revealTargets, function (el) {
+            el.classList.add('is-revealed');
+        });
+    }
+
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    if (!('IntersectionObserver' in window) || reducedMotion.matches) {
+        revealAll();
+    } else {
+        var revealObserver = new IntersectionObserver(function (entries, obs) {
+            entries.forEach(function (e) {
+                if (!e.isIntersecting) return;
+                e.target.classList.add('is-revealed');
+                obs.unobserve(e.target); // Reveal once, never re-hide.
+            });
+        }, {
+            // Fires slightly before the element reaches the viewport edge so
+            // the motion reads as easing in rather than popping.
+            rootMargin: '0px 0px -12% 0px',
+            threshold: 0.08
+        });
+
+        Array.prototype.forEach.call(revealTargets, function (el) {
+            revealObserver.observe(el);
+        });
+
+        // Anything already on screen at load reveals immediately.
+        requestAnimationFrame(function () {
+            Array.prototype.forEach.call(revealTargets, function (el) {
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('is-revealed');
+                    revealObserver.unobserve(el);
+                }
+            });
+        });
+    }
+
+    // Printing must never capture a half-played animation.
+    window.addEventListener('beforeprint', revealAll);
+    var printQuery = window.matchMedia('print');
+    if (printQuery.addEventListener) {
+        printQuery.addEventListener('change', function (e) {
+            if (e.matches) revealAll();
+        });
+    }
 
     /* ---------------------------------------------------------------
        Reading progress + active section in the nav
