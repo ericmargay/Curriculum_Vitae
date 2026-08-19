@@ -59,9 +59,11 @@
             btn.setAttribute('aria-pressed', String(btn.getAttribute('data-set-lang') === lang));
         });
 
-        document.title = lang === 'es'
+        // Each CV variant owns its copy and metadata while sharing this behavior.
+        // The fallback keeps older/standalone pages working without data attributes.
+        document.title = root.getAttribute('data-title-' + lang) || (lang === 'es'
             ? 'Eric Margay — Ingeniero de Machine Learning y Datos'
-            : 'Eric Margay — Machine Learning & Python Data Engineer';
+            : 'Eric Margay — Machine Learning & Python Data Engineer');
     }
 
     Array.prototype.forEach.call(langButtons, function (btn) {

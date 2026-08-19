@@ -82,6 +82,30 @@
     --shadow-lg: 0 12px 32px -8px rgba(0, 0, 0, 0.6);
 }
 
+/* CV variants may change their editorial tone without forking the design system. */
+:root[data-variant="education"] {
+    --accent: #176b57;
+    --accent-hover: #0f5142;
+    --accent-soft: rgba(23, 107, 87, 0.09);
+    --ring: rgba(23, 107, 87, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root[data-variant="education"]:not([data-theme="light"]) {
+        --accent: #76d6ba;
+        --accent-hover: #9be4cf;
+        --accent-soft: rgba(118, 214, 186, 0.13);
+        --ring: rgba(118, 214, 186, 0.5);
+    }
+}
+
+:root[data-theme="dark"][data-variant="education"] {
+    --accent: #76d6ba;
+    --accent-hover: #9be4cf;
+    --accent-soft: rgba(118, 214, 186, 0.13);
+    --ring: rgba(118, 214, 186, 0.5);
+}
+
 /* --------------------------------------------------------------------------
    2. Base
    -------------------------------------------------------------------------- */
@@ -549,6 +573,10 @@ main {
     font-weight: 600;
     letter-spacing: -0.025em;
     line-height: 1.02;
+    text-wrap: balance;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
 }
 
 .hero__role {
@@ -557,28 +585,24 @@ main {
     font-size: clamp(1.02rem, 2.4vw, 1.2rem);
     font-weight: 550;
     letter-spacing: -0.005em;
+    text-wrap: balance;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
 }
 
 .hero__summary {
-    max-width: 70ch;
+    max-width: 72ch;
     margin-top: 20px;
     color: var(--text-muted);
     font-size: 1rem;
     line-height: 1.72;
-}
-
-/* Justification only where the measure is wide enough to avoid rivers of
-   whitespace; narrow columns stay ragged-right. Hyphenation is language-aware
-   because the <html lang> attribute follows the EN/ES toggle. */
-@media (min-width: 700px) {
-
-    .hero__summary,
-    .bullets li {
-        text-align: justify;
-        text-justify: inter-word;
-        hyphens: auto;
-        -webkit-hyphens: auto;
-    }
+    text-align: start;
+    text-wrap: pretty;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+    -webkit-hyphens: none;
 }
 
 .contact {
@@ -1315,8 +1339,9 @@ main {
         font-size: 9.5pt;
         line-height: 1.5;
         color: var(--text-muted);
-        text-align: justify;
-        hyphens: auto;
+        text-align: start;
+        hyphens: none;
+        -webkit-hyphens: none;
     }
 
     /* Contact collapses to one dense, evenly separated line. */
