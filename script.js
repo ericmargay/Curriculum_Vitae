@@ -149,6 +149,8 @@
     var bar = document.getElementById('progress-bar');
     var navLinks = document.querySelectorAll('#section-nav a');
     var mainCol = document.querySelector('.layout__main');
+    var layout = document.querySelector('.layout');
+    var sidebar = document.querySelector('.layout__aside');
     var sections = [];
 
     Array.prototype.forEach.call(navLinks, function (link) {
@@ -170,6 +172,26 @@
             var scrollable = document.documentElement.scrollHeight - window.innerHeight;
             var pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
             bar.style.width = Math.min(100, Math.max(0, pct)) + '%';
+        }
+
+        // The desktop sidebar has its own hidden overflow so it can remain
+        // sticky. Tie that overflow to the main page journey: when the layout
+        // reaches its end, the final sidebar content is guaranteed to be in
+        // view as well. Manual scrolling inside the sidebar still works until
+        // the document itself moves again.
+        if (layout && sidebar && window.innerWidth >= 1000) {
+            var sidebarRange = sidebar.scrollHeight - sidebar.clientHeight;
+
+            if (sidebarRange > 0) {
+                var stickyOffset = (parseFloat(getComputedStyle(root).getPropertyValue('--topbar-height')) || 60) + 24;
+                var layoutTop = layout.getBoundingClientRect().top + window.scrollY;
+                var journeyStart = Math.max(0, layoutTop - stickyOffset);
+                var journeyEnd = Math.max(journeyStart + 1, layoutTop + layout.offsetHeight - window.innerHeight);
+                var journey = (window.scrollY - journeyStart) / (journeyEnd - journeyStart);
+                var clampedJourney = Math.min(1, Math.max(0, journey));
+
+                sidebar.scrollTop = clampedJourney * sidebarRange;
+            }
         }
 
         if (!sections.length) return;

@@ -106,6 +106,29 @@
     --ring: rgba(118, 214, 186, 0.5);
 }
 
+:root[data-variant="hardware"] {
+    --accent: #a34816;
+    --accent-hover: #7d3511;
+    --accent-soft: rgba(163, 72, 22, 0.09);
+    --ring: rgba(163, 72, 22, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root[data-variant="hardware"]:not([data-theme="light"]) {
+        --accent: #f0a36f;
+        --accent-hover: #ffc39b;
+        --accent-soft: rgba(240, 163, 111, 0.13);
+        --ring: rgba(240, 163, 111, 0.5);
+    }
+}
+
+:root[data-theme="dark"][data-variant="hardware"] {
+    --accent: #f0a36f;
+    --accent-hover: #ffc39b;
+    --accent-soft: rgba(240, 163, 111, 0.13);
+    --ring: rgba(240, 163, 111, 0.5);
+}
+
 /* --------------------------------------------------------------------------
    2. Base
    -------------------------------------------------------------------------- */
@@ -592,12 +615,14 @@ main {
 }
 
 .hero__summary {
-    max-width: 72ch;
+    width: 100%;
+    max-width: none;
     margin-top: 20px;
     color: var(--text-muted);
     font-size: 1rem;
     line-height: 1.72;
-    text-align: start;
+    text-align: justify;
+    text-justify: inter-word;
     text-wrap: pretty;
     overflow-wrap: normal;
     word-break: normal;
@@ -1253,7 +1278,9 @@ main {
 
     @page {
         size: Letter;
-        margin: 14mm 15mm;
+        /* A real printable safe area. Keeping this in @page (instead of on
+           main) makes the margin repeat correctly on every PDF page. */
+        margin: 16mm 17mm 17mm;
     }
 
     /* Backgrounds and borders are part of the design here (tags, rules), so
@@ -1265,32 +1292,50 @@ main {
         print-color-adjust: exact;
     }
 
-    :root {
+    :root,
+    :root[data-theme="dark"] {
         /* Force the light palette regardless of the on-screen theme, with a
            deep indigo accent that stays legible in greyscale. */
-        --bg: #ffffff;
-        --bg-subtle: #f4f5f8;
-        --surface: #ffffff;
-        --border: #c9cfd9;
-        --border-strong: #8d95a3;
-        --text: #101319;
-        --text-muted: #23272f;
-        --text-faint: #545b66;
-        --accent: #1e3a8a;
-        --shadow-sm: none;
-        --shadow-md: none;
-        --shadow-lg: none;
+        color-scheme: light !important;
+        --bg: #ffffff !important;
+        --bg-subtle: #f4f5f8 !important;
+        --surface: #ffffff !important;
+        --border: #c9cfd9 !important;
+        --border-strong: #8d95a3 !important;
+        --text: #101319 !important;
+        --text-muted: #23272f !important;
+        --text-faint: #545b66 !important;
+        --accent: #1e3a8a !important;
+        --shadow-sm: none !important;
+        --shadow-md: none !important;
+        --shadow-lg: none !important;
+    }
+
+    /* Preserve each CV's identity while keeping its printable palette light. */
+    :root[data-variant="education"],
+    :root[data-theme="dark"][data-variant="education"] {
+        --accent: #176b57 !important;
+    }
+
+    :root[data-variant="hardware"],
+    :root[data-theme="dark"][data-variant="hardware"] {
+        --accent: #a34816 !important;
     }
 
     html {
         scroll-padding-top: 0;
+        background: #ffffff !important;
     }
 
     body {
-        background: #fff;
+        margin: 0;
+        background: #ffffff !important;
         color: var(--text);
         font-size: 9.7pt;
         line-height: 1.5;
+        overflow: visible;
+        orphans: 3;
+        widows: 3;
     }
 
     /* The printed sheet stays at Harvard length: the collapsible overflow
@@ -1301,13 +1346,12 @@ main {
     .skip-link,
     .hero__actions,
     .hero__eyebrow,
-    .footer__meta,
+    .footer,
     .more {
         display: none !important;
     }
 
-    main,
-    .footer {
+    main {
         max-width: none;
         padding: 0;
     }
@@ -1339,7 +1383,8 @@ main {
         font-size: 9.5pt;
         line-height: 1.5;
         color: var(--text-muted);
-        text-align: start;
+        text-align: justify;
+        text-justify: inter-word;
         hyphens: none;
         -webkit-hyphens: none;
     }
@@ -1391,6 +1436,8 @@ main {
 
     .section {
         margin-bottom: 13pt;
+        break-inside: auto;
+        page-break-inside: auto;
     }
 
     .section__title,
@@ -1424,8 +1471,11 @@ main {
 
     .entry {
         padding-bottom: 9pt;
-        break-inside: avoid;
-        page-break-inside: avoid;
+        /* Long roles (especially Waltem) are allowed to continue naturally.
+           Their atomic children below remain indivisible, avoiding clipping
+           while still preventing awkward splits inside a bullet or badge. */
+        break-inside: auto;
+        page-break-inside: auto;
     }
 
     .entry::before {
@@ -1433,7 +1483,14 @@ main {
     }
 
     .entry__head {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) max-content;
+        align-items: start;
         gap: 0 12pt;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        break-after: avoid;
+        page-break-after: avoid;
     }
 
     .entry__org {
@@ -1458,6 +1515,8 @@ main {
         font-size: 8.5pt;
         font-weight: 600;
         color: var(--accent);
+        white-space: nowrap;
+        text-align: right;
     }
 
     .entry__role {
@@ -1467,10 +1526,13 @@ main {
         font-weight: 500;
         color: var(--text-muted);
         break-after: avoid;
+        page-break-after: avoid;
     }
 
     .bullets {
         margin-top: 5pt;
+        break-before: avoid;
+        page-break-before: avoid;
     }
 
     .bullets li {
@@ -1482,6 +1544,7 @@ main {
         text-align: justify;
         hyphens: auto;
         break-inside: avoid;
+        page-break-inside: avoid;
         orphans: 2;
         widows: 2;
     }
@@ -1538,6 +1601,8 @@ main {
     .certs {
         gap: 2.5pt;
         margin-top: 4pt;
+        break-inside: avoid;
+        page-break-inside: avoid;
     }
 
     .certs a {
@@ -1556,18 +1621,25 @@ main {
         flex-wrap: wrap;
         gap: 2.5pt;
         margin-top: 5pt;
+        break-inside: avoid;
+        page-break-inside: avoid;
     }
 
     .tags li {
         display: inline-block;
         padding: 1pt 4.5pt;
-        border: 0.5pt solid var(--border);
+        border: 0.65pt solid #8d95a3 !important;
         border-radius: 2.5pt;
-        background: var(--bg-subtle);
-        color: var(--text-faint);
+        /* Deliberately white: this stays readable even when a browser ignores
+           background-graphics preferences or prints a dark screen theme. */
+        background: #ffffff !important;
+        color: #23272f !important;
         font-size: 7.6pt;
         font-weight: 600;
         line-height: 1.5;
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
     }
 
     .timeline--compact .entry {
@@ -1585,6 +1657,8 @@ main {
         border-radius: 0;
         background: none;
         box-shadow: none;
+        break-inside: auto;
+        page-break-inside: auto;
     }
 
     .card__title {
@@ -1599,6 +1673,7 @@ main {
         gap: 0 9pt;
         margin-bottom: 3pt;
         break-inside: avoid;
+        page-break-inside: avoid;
     }
 
     #skills .skill-group h3 {
@@ -1635,6 +1710,7 @@ main {
         margin-bottom: 5pt;
         border-bottom: 0;
         break-inside: avoid;
+        page-break-inside: avoid;
     }
 
     .awards h3 {
@@ -1646,15 +1722,6 @@ main {
     .awards__meta {
         margin: 0;
         font-size: 8.5pt;
-        color: var(--text-faint);
-    }
-
-    /* ---------------------------------------------------------------- Footer */
-
-    .footer {
-        padding: 9pt 0 0;
-        border-top: 0.5pt solid var(--border);
-        font-size: 8pt;
         color: var(--text-faint);
     }
 
