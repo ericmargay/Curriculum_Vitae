@@ -7,7 +7,7 @@
 
     <title>Eric Margay — Machine Learning &amp; Python Data Engineer</title>
     <meta name="description"
-        content="Eric Margay — Machine Learning and Python Data Engineer in Mexico City. Production data pipelines, CAE analytics, Airflow, Docker, ESP32 and embedded systems. Currently at Ford Motor Company's Global Technology &amp; Business Center.">
+        content="Eric Margay — Machine Learning and Python Data Engineer in Mexico City. Production data pipelines, CAE analytics, Airflow, Docker, ESP32 and embedded systems. Currently at Ford Motor Company's Global Technology &amp; Business Center and freelance hardware engineer for a medical machine-vision system.">
     <meta name="author" content="Eric Margay">
 
     <meta property="og:type" content="profile">
@@ -157,15 +157,19 @@
                 Engineer with 7+ years building production data systems end to end — ingestion, feature computation,
                 validation and delivery — and the embedded hardware that feeds them. At Ford's Global Technology &amp;
                 Business Center I turn raw CAE PowerTrain simulation output into ML-ready datasets and the analytics
-                tools engineers use daily. Equal parts data engineer and ESP32 hacker — UNAM-licensed, published in
+                tools engineers use daily. Since September 2026 I am also the freelance hardware engineer behind the image-acquisition
+                system of Luma Prima, a medical machine-vision start-up — cameras, optics, illumination, compute platform and
+                compliance path for an operating-room pilot. Equal parts data engineer and ESP32 hacker — UNAM-licensed, published in
                 peer-reviewed research, and the instructor behind 8 technical workshops across Latin America.
             </p>
             <p class="hero__summary es">
                 Ingeniero con más de 7 años construyendo sistemas de datos en producción de punta a punta — ingesta,
                 cómputo de features, validación y entrega — y el hardware embebido que los alimenta. En el Global
                 Technology &amp; Business Center de Ford convierto la salida cruda de simulación CAE PowerTrain en
-                datasets listos para ML y en las herramientas de analítica que los ingenieros usan a diario. Mitad
-                ingeniero de datos, mitad hacker de ESP32 — titulado por la UNAM con cédula profesional, publicado en
+                datasets listos para ML y en las herramientas de analítica que los ingenieros usan a diario. Desde septiembre de 2026
+                soy además el ingeniero de hardware freelance del sistema de adquisición de imagen de Luma Prima, una start-up de
+                visión por computadora médica — cámaras, óptica, iluminación, plataforma de cómputo y ruta de cumplimiento para un
+                piloto en quirófano. Mitad ingeniero de datos, mitad hacker de ESP32 — titulado por la UNAM con cédula profesional, publicado en
                 investigación arbitrada, y con 8 talleres técnicos impartidos en Latinoamérica.
             </p>
 
@@ -220,6 +224,74 @@
                     </h2>
 
                     <ol class="timeline">
+
+                        <!-- LUMA PRIMA -->
+                        <li class="entry">
+                            <div class="entry__head">
+                                <h3 class="entry__org">
+                                    Luma Prima, Inc.
+                                    <span class="entry__org-sub"><span class="en">Machine-vision surgical-instrument reconciliation for the operating room</span><span class="es">Reconciliación de instrumental quirúrgico por visión por computadora para el quirófano</span></span>
+                                </h3>
+                                <p class="entry__date">
+                                    <span class="en">Sep 2026 — Present</span>
+                                    <span class="es">Sep 2026 — Actualidad</span>
+                                </p>
+                            </div>
+                            <p class="entry__role">
+                                <span class="en">Freelance Hardware Engineer — Image Acquisition · Cambridge, MA (remote from Mexico City)</span>
+                                <span class="es">Ingeniero de Hardware Freelance — Adquisición de Imagen · Cambridge, MA (remoto desde la Ciudad de México)</span>
+                            </p>
+
+                            <ul class="bullets">
+                                <li class="en">Own the hardware track of a machine-vision system that photographs surgical instruments as they enter and leave the sterile field and keeps a running reconciliation count: camera, lens, illumination, filtering and mounting selection with a written rationale covering resolution at the working distance, field of view, depth of field, motion blur and specular reflection from polished stainless steel.</li>
+                                <li class="es">Soy responsable de la parte de hardware de un sistema de visión por computadora que fotografía el instrumental quirúrgico al entrar y salir del campo estéril y mantiene un conteo de reconciliación en tiempo real: selección de cámara, lente, iluminación, filtrado y montaje con justificación escrita de resolución a la distancia de trabajo, campo de visión, profundidad de campo, desenfoque por movimiento y reflejo especular del acero inoxidable pulido.</li>
+
+                                <li class="en">Turned a 69-page patent filing and a kick-off brief into a ten-document research package in three weeks: requirements per stage traced to the patent, operating-room layout and wiring, six tiered bills of materials, cross-border sourcing, standards and a risk register (IEC 60601-1 / -1-2, sterile-field practice), compute platform and OS hardening, installation and signed offline updates, a bench plan and the open questions — plus five architecture decision records adopted on the team's template.</li>
+                                <li class="es">Convertí una solicitud de patente de 69 páginas y el brief de arranque en un paquete de investigación de diez documentos en tres semanas: requisitos por etapa trazados a la patente, distribución y cableado del quirófano, seis listas de materiales en tres niveles, abastecimiento entre dos países, normas y registro de riesgos (IEC 60601-1 / -1-2, práctica de campo estéril), plataforma de cómputo y endurecimiento del sistema operativo, instalación y actualizaciones firmadas sin red, plan de banco y preguntas abiertas — más cinco registros de decisiones de arquitectura adoptados en la plantilla del equipo.</li>
+
+                                <li class="en">Designed a self-contained mobile staging station: a stainless mobile table with two sterile-draped staging zones, a pole-mounted camera boom with cross-polarised high-CRI LED illumination (≥ 7 px/mm at a 1 m working distance), two displays, sterile-side and non-sterile-side input devices, a compact x86 workstation with an NVIDIA GPU and a UL 60601-1 isolation transformer — one hospital-grade plug, geometry calibrated once and independent of the room, cleared from the field in a single push.</li>
+                                <li class="es">Diseñé una estación de conteo móvil y autónoma: mesa móvil de acero inoxidable con dos zonas de conteo bajo campo estéril, brazo de cámaras en poste con iluminación LED de alto CRI con polarización cruzada (≥ 7 px/mm a 1 m de distancia de trabajo), dos monitores, dispositivos de entrada del lado estéril y no estéril, estación de trabajo x86 compacta con GPU NVIDIA y transformador de aislamiento UL 60601-1 — una sola clavija grado hospital, geometría calibrada una vez e independiente de la sala, retirable del campo de un solo empujón.</li>
+
+                                <li class="en">Specified camera capture over UVC/V4L2 with exposure, gain and white balance locked through standard controls and no vendor SDK, so every device on the system is a USB class device under a permissive-licence-only rule; priced an industrial GenICam fallback and audited the licence of every dependency, surfacing AGPL exposure in a widely used detector training stack and LGPL FFmpeg inside the PyPI OpenCV wheels.</li>
+                                <li class="es">Especifiqué la captura de cámara sobre UVC/V4L2 con exposición, ganancia y balance de blancos bloqueados mediante controles estándar y sin SDK del fabricante, de modo que todo dispositivo del sistema es un dispositivo USB de clase bajo una regla de licencias permisivas; coticé un respaldo industrial GenICam y audité la licencia de cada dependencia, detectando exposición a AGPL en un stack de entrenamiento de detectores muy usado y FFmpeg LGPL dentro de los wheels de OpenCV en PyPI.</li>
+
+                                <li class="en">Defined the compute and operating-system platform: Ubuntu 24.04 LTS minimal with a read-only root and a kiosk compositor, ONNX Runtime as the only inference dependency with the accelerator chosen at deployment (CUDA / TensorRT or OpenVINO), a Docker Compose deployment identical in the cloud and on an air-gapped device, images delivered from git by a single command or as signed offline bundles, and pre-imaged spare boot drives as physical backups.</li>
+                                <li class="es">Definí la plataforma de cómputo y sistema operativo: Ubuntu 24.04 LTS mínimo con raíz de solo lectura y compositor kiosco, ONNX Runtime como única dependencia de inferencia con el acelerador elegido al desplegar (CUDA / TensorRT u OpenVINO), un despliegue Docker Compose idéntico en la nube y en un equipo sin red, imágenes entregadas desde git con un solo comando o como paquetes firmados sin conexión, y discos de arranque de repuesto pre-imaginados como respaldo físico.</li>
+
+                                <li class="en">Built a local Three.js scenario tool — pieces as data, anchors as relationships — that sizes every asset from the bill of materials, models hospital standards (hospital-grade receptacles, isolated power, surgical-light reach, laminar flow, patient-care vicinity), routes and measures every cable and exports renders and findings; it caught cable runs 70 % longer than the plan and drove the station redesign.</li>
+                                <li class="es">Construí una herramienta local de escenarios en Three.js — piezas como datos, anclas como relaciones — que dimensiona cada componente desde la lista de materiales, modela estándares hospitalarios (contactos grado hospital, energía aislada, alcance de lámparas quirúrgicas, flujo laminar, vecindad de atención al paciente), enruta y mide cada cable y exporta renders y hallazgos; detectó tendidos 70 % más largos que el plan y motivó el rediseño hacia la estación.</li>
+                            </ul>
+
+                            <details class="more">
+                                <summary><span class="en">View integration detail</span><span class="es">Ver detalle de integración</span></summary>
+                                <ul class="bullets">
+                                    <li class="en"><strong>Two pointers on one computer:</strong> bound each input device to a role by its physical USB port with udev rules, a Python evdev controller that grabs the device exclusively and publishes role-tagged events, and both pointers drawn by the interface — the sterile and non-sterile Accept of the patent on a single machine.</li>
+                                    <li class="es"><strong>Dos punteros en una sola computadora:</strong> ligué cada dispositivo de entrada a un rol por su puerto USB físico con reglas udev, un controlador Python evdev que toma el dispositivo en exclusiva y publica eventos con rol, y ambos punteros dibujados por la interfaz — el Aceptar estéril y no estéril de la patente en una sola máquina.</li>
+
+                                    <li class="en"><strong>Electrical safety path:</strong> commodity IT behind one medical-grade isolation transformer with one hospital-grade plug, leakage and earth measured on the bench, hospital biomedical-engineering inspection as a gate, floor-standing masts and ceiling arms evaluated and rejected against a ten-second clearing requirement.</li>
+                                    <li class="es"><strong>Ruta de seguridad eléctrica:</strong> equipo de TI común detrás de un transformador de aislamiento grado médico con una sola clavija grado hospital, fuga y tierra medidas en banco, inspección de ingeniería biomédica del hospital como compuerta, mástiles de piso y brazos de techo evaluados y descartados frente al requisito de despeje en diez segundos.</li>
+
+                                    <li class="en"><strong>Procurement and sourcing:</strong> six bills of materials in three price tiers generated from one data source so totals cannot drift, an itemised quote in three approval blocks with lead times, tier per line, import / tax / contingency uplifts and a dated reference-frame plan; two-country sourcing with domestic purchase on each side so no hardware crosses a border.</li>
+                                    <li class="es"><strong>Compras y abastecimiento:</strong> seis listas de materiales en tres niveles de precio generadas desde una sola fuente de datos para que los totales no diverjan, una cotización detallada en tres bloques de aprobación con tiempos de entrega, nivel por línea, recargos de importación / impuestos / contingencia y un plan de fotos de referencia con fechas; abastecimiento en dos países con compra local de cada lado para que ningún hardware cruce la frontera.</li>
+
+                                    <li class="en"><strong>Working with the architecture:</strong> reviewed the team's architecture pack (ports and adapters, on-device inference ADR, Compose device profile), wrote the camera-class and mount decision statements, and delivered a data-driven working model where a changed assumption recomputes the bills of materials, purchase gates and ADR health — all documentation bilingual, English and Spanish.</li>
+                                    <li class="es"><strong>Trabajo con la arquitectura:</strong> revisé el paquete de arquitectura del equipo (puertos y adaptadores, ADR de inferencia en el dispositivo, perfil Compose del equipo), redacté las posturas de decisión sobre clase de cámara y montaje, y entregué un modelo de trabajo basado en datos donde un supuesto que cambia recalcula listas de materiales, compuertas de compra y vigencia de los ADR — toda la documentación bilingüe, inglés y español.</li>
+                                </ul>
+                            </details>
+
+                            <ul class="tags">
+                                <li>Machine Vision</li>
+                                <li>UVC / V4L2</li>
+                                <li>Optics & Illumination</li>
+                                <li>ONNX Runtime</li>
+                                <li>Ubuntu · Docker Compose</li>
+                                <li>Three.js</li>
+                                <li>IEC 60601-1</li>
+                                <li>BOM & Sourcing</li>
+                                <li>ADRs</li>
+                                <li>Python</li>
+                            </ul>
+                        </li>
 
                         <!-- FORD -->
                         <li class="entry">
@@ -1181,9 +1253,11 @@
                     <div class="skill-group">
                         <h3><span class="en">Hardware &amp; Embedded</span><span class="es">Hardware y Embebidos</span></h3>
                         <p class="en">Raspberry Pi · ESP32 (Espressif) · Atmel / ATTINY · Ultra-Wideband RF · BLE sensors ·
-                            Serial &amp; WebSocket protocols · Arduino IDE</p>
+                            Serial &amp; WebSocket protocols · Arduino IDE · UVC / V4L2 cameras · Optics &amp; illumination ·
+                            ONNX Runtime · IEC 60601-1 basics</p>
                         <p class="es">Raspberry Pi · ESP32 (Espressif) · Atmel / ATTINY · Radio Ultra-Wideband · Sensores BLE ·
-                            Protocolos serial y WebSocket · Arduino IDE</p>
+                            Protocolos serial y WebSocket · Arduino IDE · Cámaras UVC / V4L2 · Óptica e iluminación ·
+                            ONNX Runtime · Fundamentos de IEC 60601-1</p>
                     </div>
 
                     <div class="skill-group">
