@@ -379,7 +379,7 @@ em {
 
 .topbar__nav a {
     flex: none;
-    padding: 6px 11px;
+    padding: 6px 9px;
     border-radius: var(--radius-sm);
     color: var(--text-muted);
     font-size: 0.83rem;
